@@ -1,23 +1,21 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
 
-
-<section id="container">
-
-    <canvas id="picture" width="650" height="565"></canvas>
-
-    <div id="controls">
-
-        <div id="filters-list"></div>
-
-        <button id="loadImage">Add</button>
-
-        <input type="file" id="fileUpload"
-
-           style="display: none;"
-
-           accept="image/gif, image/jpeg, image/png" />
-
+<h1>New Post</h1>
+<%= form_for(@post) do |f|  %>
+  <% unless @post.errors.count == 0   %>
+    <div class="alert alert-error">
+      The form contains
+      <%= pluralize(@user.errors.count, "error") %>.
     </div>
-
-</section>
+    <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li>*
+          <%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div><%= f.label :text_overlay %><br>
+    <%= f.text_area :text_overlay %></div>
+  <div><%= f.label :photo %><br>
+    <%= f.file_field :photo %></div><br>
+  <div><%= f.submit "Create my post", class: "form_button" %></div>
+<% end %>
