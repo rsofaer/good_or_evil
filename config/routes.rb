@@ -1,5 +1,6 @@
 GoodOrEvil::Application.routes.draw do
-  get "posts/index"
+  devise_for :users
+  root :to => "posts#index"
   get "posts/new"
   get "posts/show"
   get "posts/edit"
