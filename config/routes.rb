@@ -1,5 +1,5 @@
 GoodOrEvil::Application.routes.draw do
-  get "posts/index"
+  root :to => "posts#index"
   get "posts/new"
   get "posts/show"
   get "posts/edit"
