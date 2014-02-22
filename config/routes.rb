@@ -1,4 +1,5 @@
 GoodOrEvil::Application.routes.draw do
+  devise_for :users
   root :to => "posts#index"
   get "posts/new"
   get "posts/show"
