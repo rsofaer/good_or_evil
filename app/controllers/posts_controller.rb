@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    post_params = params.require(:post).permit(:text_overlay, :photo, :photo_link, :good, :evil)
+    post_params = params.require(:post).permit(:text_overlay, :photo, :photo_link)
     @post = current_user.posts.new(post_params)
 
     if @post.save
