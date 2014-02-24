@@ -4,7 +4,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-
   end
 
   def new
@@ -20,9 +19,6 @@ class PostsController < ApplicationController
     else
       render action: 'new'
     end
-  end
-
-  def create
   end
 
   def show
