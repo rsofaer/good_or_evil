@@ -16,15 +16,13 @@ $(function(){
     console.log(good);
 
 
-  //   updated_todo.completed = checkbox.checked;
-    // good.id = this.dataset.id;
-
   //   // Let's write a update request
-  //   $.ajax(
-  //     {type: 'patch', url: '/todos/'+updated_todo.id+'.json', data: {todo: updated_todo}
-  //   }).done(function(data){
-  //       $(_this).toggleClass("done-true");
-  //     });
+    $.ajax(
+      {type: 'post', url: '/posts/'+good.likeable_id+'.json', data: {good: good}
+    }).done(function(data){
+        //some function here
+        console.log("ajax call done");
+      });
     }
 
   });
