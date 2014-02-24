@@ -22,9 +22,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def create
-  end
-
   def show
     @post = Post.find(params[:id])
   end
