@@ -1,26 +1,36 @@
-<h1>Newsfeed</h1>
-<div class="item">
-<% @posts.each do |post| %>
-  <div class="post" data-id="<%=post.id%>">
-    <div><img src="<%= post.photo_link %>"></div><br>
-    <div><%= post.text_overlay %></div><br>
-    <div>Good ratings: <%= post.likes.where(good: true).count %></div>
-    <div>Evil ratings: <%= post.likes.where(good: false).count %></div>
-  <br>
-  <button id="good">good</button>
-  <button id="evil">evil</button>
-  </div>
 
-  <div class="comment" data-id="<%=post.id%>">
-    <h4>Comments</h4>
-    <% post.comments.each do |comment| %>
-      <div data-id="<%=comment.id%>"><%= comment.body %></div><br>
-      <div>Good ratings: <%= comment.likes.where(good: true).count %></div>
-      <div>Evil ratings: <%= comment.likes.where(good: false).count %></div>
-      <button id="good">good</button>
-      <button id="evil">evil</button>
-    <% end %>
+<div class="container">
+  <div class="row ">
+    <div class="small-6 small-centered medium-4 medium-centered large-4 large-centered columns">
+      <h1>Newsfeed</h1>
+      <div class="item">
+      <% @posts.each do |post| %>
+        <div class="post" data-id="<%=post.id%>">
+          <div><img src="<%= post.photo_link %>"></div><br>
+          <div><%= post.text_overlay %></div><br>
+          <div>Good ratings: <%= post.likes.where(good: true).count %></div>
+          <div>Evil ratings: <%= post.likes.where(good: false).count %></div>
+        <br>
+        <button id="good">good</button>
+        <button id="evil">evil</button>
+        </div>
+
+        <div class="comment" data-id="<%=post.id%>">
+          <h4>Comments</h4>
+          <% post.comments.each do |comment| %>
+            <div data-id="<%=comment.id%>"><%= comment.body %></div><br>
+            <div>Good ratings: <%= comment.likes.where(good: true).count %></div>
+            <div>Evil ratings: <%= comment.likes.where(good: false).count %></div>
+            <button id="good">good</button>
+            <button id="evil">evil</button>
+          <% end %>
+        </div>
+        
+        <% end %>
+      </div>
+
+    </div>
   </div>
-  
-<% end %>
 </div>
+
+
