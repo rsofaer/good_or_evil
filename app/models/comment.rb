@@ -1,6 +1,5 @@
-class Post < ActiveRecord::Base
+class Comment < ActiveRecord::Base
+  belongs_to :post
   belongs_to :user
-  has_many :comments
   has_many :likes, as: :likeable, dependent: :destroy
-  mount_uploader :photo
 end
