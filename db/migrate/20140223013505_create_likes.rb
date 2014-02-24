@@ -1,7 +1,7 @@
 class CreateLikes < ActiveRecord::Migration
   def change
     create_table :likes do |t|
-      t.boolean :good?, default: nil
+      t.boolean :good, default: nil
       # t.boolean :evil, default: false
       # t.integer :likeable_id
       # t.string :likeable_type
