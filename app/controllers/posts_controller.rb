@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    post_params = params.require(:post).permit(:url, :photo, :text, :photolink)
+    post_params = params.require(:post).permit(:url, :photo, :text_overlay, :photolink)
     @post = Post.create(post_params)
     #The AWS code establishes credentials to access the S3 storage.
     AWS.config({
