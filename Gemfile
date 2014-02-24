@@ -66,6 +66,8 @@ gem 'binding_of_caller'
 gem "figaro"
 
 gem 'carrierwave-aws'
+
+gem 'mini_magick'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
