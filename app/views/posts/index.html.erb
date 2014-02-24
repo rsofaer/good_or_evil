@@ -1,5 +1,5 @@
 <h1>Newsfeed</h1>
-
+<div class="item">
 <% @posts.each do |post| %>
   <div>
     <div><img src="<%= post.photo_link %>"></div><br>
@@ -8,12 +8,15 @@
     <div>Evil ratings: <%= post.likes.where(good?: false).count %></div>
   </div><br>
 
-  <div>
+  <div class="comments">
     <h4>Comments</h4>
     <% post.comments.each do |comment| %>
       <div><%= comment.body %></div><br>
       <div>Good ratings: <%= comment.likes.where(good?: true).count %></div>
       <div>Evil ratings: <%= comment.likes.where(good?: false).count %></div>
+      <button id="good">good</button>
+      <button id="evil">evil</button>
     <% end %>
   </div>
 <% end %>
+</div>
