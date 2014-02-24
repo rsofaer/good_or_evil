@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140223013505) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20140223013505) do
     t.datetime "updated_at"
     t.string   "photo"
     t.integer  "user_id"
+    t.text     "aws_url"
   end
 
   create_table "users", force: true do |t|

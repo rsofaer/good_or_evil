@@ -17,5 +17,9 @@
     <%= f.text_area :text_overlay %></div>
   <div><%= f.label :photo %><br>
     <%= f.file_field :photo %></div><br>
+  <div>
+    <label for="post_photo">Mobile Uploads</label>
+    <input type="file" capture="camera" accept="image/*" id="post_photo" name="post[photo]">
+  </div>
   <div><%= f.submit "Create my post", class: "form_button" %></div>
 <% end %>
