@@ -1,45 +1,54 @@
 $(function(){
-
+  //onclick event for a post
   $('.item').on('click','.post', function(event){
-  console.log(event);
-  console.log(event.target);
-  if(event.target.id === "good"){
-    // var checkbox = event.target;
-    var good_btn = event.target;
-    var _this = this;
+  var like = {};
+    //sets the good boolean to true or false based on button clicked
+    if(event.target.id === "good"){
+      like.good = true;
+    }
+    if(event.target.id === "evil"){
+      like.good = false;
+    }
+    like.likeable_type = "Post";
+    like.likeable_id = this.dataset.id;
 
-    // var updated_todo = {};
-    var good = {good: true, likeable_type:"Post"};
-    good.likeable_id = this.dataset.id;
-
-    $.ajax(
-      {type: 'post', url: '/posts/'+good.likeable_id+'/like.json', data: {like: good}
+  var _this = this;
+    //making the ajax call to route specified with the post id
+    $.ajax({
+      type: 'post', 
+      url: '/posts/'+like.likeable_id+'/like.json', 
+      data: {like: like}
     }).done(function(data){
-
+        //ajax response includes good and evil count
         $(_this).find('.good_post').text(data.good_count);
         $(_this).find('.evil_post').text(data.evil_count);
-
       });
-    }
 
   });
-
+  //onclick event for a comment
   $('.item').on('click','.comment', function(event){
-  console.log(event);
-  console.log(event.target);
-  if(event.target.id === "good"){
-    // var checkbox = event.target;
-    var good_btn = event.target;
-    var _this = this;
-    console.log(this);
-    console.log(this.dataset);
-    var good = {};
-
+  var like = {};
+    if(event.target.id === "good"){
+      like.good = true;
     }
+    if(event.target.id === "evil"){
+      like.good = false;
+    }
+    like.likeable_type = "Comment";
+    like.likeable_id = this.dataset.id;
+
+  var _this = this;
+    //making the ajax call to route specified with the comment id
+    $.ajax({
+      type: 'post', 
+      url: '/comments/'+like.likeable_id+'/like.json', 
+      data: {like: like}
+    }).done(function(data){
+        $(_this).find('.good_comment').text(data.good_count);
+        $(_this).find('.evil_comment').text(data.evil_count);
+      });
 
   });
-
-
 
 
 });

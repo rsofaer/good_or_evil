@@ -53,8 +53,8 @@ class PostsController < ApplicationController
     like_params = params.require(:like).permit(:good, :likeable_id, :likeable_type)
     like = Like.create(like_params)
     post = Post.find(like_params["likeable_id"])
-    good_count = post.likes.where(good: true).count
-    evil_count = post.likes.where(good: false).count
+    good_count = post.likes.where(good:true).count
+    evil_count = post.likes.where(good:false).count
     @like_count = {good_count: good_count, evil_count: evil_count}
     respond_to do |f|
       f.json { render :json => @like_count }
@@ -62,6 +62,15 @@ class PostsController < ApplicationController
   end
 
   def like_comment
+    like_params = params.require(:like).permit(:good, :likeable_id, :likeable_type)
+    like = Like.create(like_params)
+    comment = Comment.find(like_params["likeable_id"])
+    good_count = comment.likes.where(good:true).count
+    evil_count = comment.likes.where(good:false).count
+    @like_count = {good_count: good_count, evil_count: evil_count}
+    respond_to do |f|
+      f.json { render :json => @like_count }
+    end
   end
 
 
