@@ -15,8 +15,8 @@ class PostsController < ApplicationController
     @post = current_user.posts.create(post_params)
     #The AWS code establishes credentials to access the S3 storage.
     AWS.config({
-                 :access_key_id     =>  ENV['S3_KEY'],
-                 :secret_access_key => ENV['S3_SECRET']
+                 :access_key_id     => 'AKIAI6AECUXY23A6B56Q',
+                 :secret_access_key => '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'
     })
     #The s3 variable is creating a new connection to the S3 cloud storage.
     s3 = AWS::S3.new
