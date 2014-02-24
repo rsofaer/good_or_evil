@@ -4,6 +4,12 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+
+    # respond_to do |f|
+    #   # f.html
+    #   f.json { render :json => @post }
+    # end
+
   end
 
   def new
@@ -31,12 +37,42 @@ class PostsController < ApplicationController
     redirect_to @post
     File.delete("#{Rails.root}/public#{@post.photo.url}")
 
+    respond_to do |f|
+      # f.html
+      f.json { render :json => @post }
+    end
+
   end
 
   def show
     @post = Post.find(params[:id])
 
   end
+
+  def like_post
+    like_params = params.require(:like).permit(:good, :likeable_id, :likeable_type)
+    like = Like.create(like_params)
+    post = Post.find(like_params["likeable_id"])
+    good_count = post.likes.where(good:true).count
+    evil_count = post.likes.where(good:false).count
+    @like_count = {good_count: good_count, evil_count: evil_count}
+    respond_to do |f|
+      f.json { render :json => @like_count }
+    end
+  end
+
+  def like_comment
+    like_params = params.require(:like).permit(:good, :likeable_id, :likeable_type)
+    like = Like.create(like_params)
+    comment = Comment.find(like_params["likeable_id"])
+    good_count = comment.likes.where(good:true).count
+    evil_count = comment.likes.where(good:false).count
+    @like_count = {good_count: good_count, evil_count: evil_count}
+    respond_to do |f|
+      f.json { render :json => @like_count }
+    end
+  end
+
 
   def edit
   end
