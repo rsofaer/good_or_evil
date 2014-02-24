@@ -51,8 +51,8 @@ class PostsController < ApplicationController
 
   def like_post
     like_params = params.require(:like).permit(:good, :likeable_id, :likeable_type)
-    post = Post.find(like_params["likeable_id"])
     like = Like.create(like_params)
+    post = Post.find(like_params["likeable_id"])
     good_count = post.likes.where(good: true).count
     evil_count = post.likes.where(good: false).count
     @like_count = {good_count: good_count, evil_count: evil_count}
