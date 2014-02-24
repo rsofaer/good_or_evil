@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: good_or_evil_development
   pool: 5
-  username: good_or_evil
+  # username: good_or_evil
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a

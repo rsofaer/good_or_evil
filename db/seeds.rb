@@ -19,11 +19,11 @@ end
 User.all.each do |user|
   user.posts.each do |post|
     post.comments.create(body:"test comment")
-    post.likes.create(good?:true)
-    post.likes.create(good?:false) 
+    post.likes.create(good:true)
+    post.likes.create(good:false) 
     post.comments.each do |comment|
-      comment.likes.create(good?:true)
-      comment.likes.create(good?:false)
+      comment.likes.create(good:true)
+      comment.likes.create(good:false)
     end
   end
 end
