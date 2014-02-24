@@ -51,9 +51,13 @@ class PostsController < ApplicationController
 
   def like_post
     like_params = params.require(:like).permit(:good, :likeable_id, :likeable_type)
-    @like = Like.create(like_params)
+    post = Post.find(like_params["likeable_id"])
+    like = Like.create(like_params)
+    good_count = post.likes.where(good: true).count
+    evil_count = post.likes.where(good: false).count
+    @like_count = {good_count: good_count, evil_count: evil_count}
     respond_to do |f|
-      f.json { render :json => @like }
+      f.json { render :json => @like_count }
     end
   end
 

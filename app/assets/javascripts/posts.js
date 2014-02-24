@@ -21,6 +21,7 @@ $(function(){
       {type: 'post', url: '/posts/'+good.likeable_id+'/like.json', data: {like: good}
     }).done(function(data){
         //some function here
+        $('#good_post').text(data.good_count);
         console.log("ajax call done");
       });
     }
