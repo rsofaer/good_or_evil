@@ -3,6 +3,8 @@ GoodOrEvil::Application.routes.draw do
   devise_for :users
   root :to => "posts#index"
   resources :posts
+  post '/posts/:id/like', to: 'posts#like_post'
+  post '/comments/:id/like', to: 'posts#like_comment'
 
 end
 

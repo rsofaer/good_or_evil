@@ -18,7 +18,7 @@ $(function(){
 
   //   // Let's write a update request
     $.ajax(
-      {type: 'post', url: '/posts/'+good.likeable_id+'.json', data: {good: good}
+      {type: 'post', url: '/posts/'+good.likeable_id+'/like.json', data: {like: good}
     }).done(function(data){
         //some function here
         console.log("ajax call done");
