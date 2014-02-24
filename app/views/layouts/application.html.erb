@@ -7,8 +7,42 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="page">
+      <div class="off-canvas-wrap">
+        <div class="inner-wrap">
+          <div class="fixed">
+            <nav class="tab-bar">
+              <section class='right-small'>
+                <a href="" class="right-off-canvas-toggle menu-icon"><span></span></a>
+              </section>
+            </nav>
+          </div>
+          <a class="right-off-canvas-toggle data-no-turbolink"></a>
+
+          <aside class="right-off-canvas-menu">
+            <ul class="right">
+              <li class="divider data-no-turbolink"></li>
+              <li><%= link_to "Home", posts_path %></li>
+              <li class="divider data-no-turbolink"></li>
+              <li><%= link_to "Sign Up",  new_post_path %></li>
+              <li class="divider data-no-turbolink"></li>
+              <li><%= link_to "Sign In", posts_path %></li>
+              <li class="divider data-no-turbolink"></li>
+              <li><%= link_to "Sign Out", root_path %></li>
+              <li class="divider data-no-turbolink"></li>
+              <li><%= link_to "Profile", posts_path %></li>
+            </ul>    
+          </aside>
+    
+
+
+
+          <%= yield %>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+           <a class="exit-off-canvas"></a>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
