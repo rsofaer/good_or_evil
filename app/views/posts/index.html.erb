@@ -16,6 +16,9 @@
         </div>
 
         <div class="comment" data-id="<%=post.id%>">
+          <form id="addComment" data-id="<%=post.id%>">
+            <input id="new_comment" type='text' name="comment[body]">
+          </form>
           <h4>Comments</h4>
           <% post.comments.each do |comment| %>
             <div data-id="<%=comment.id%>"><%= comment.body %></div><br>

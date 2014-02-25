@@ -49,6 +49,16 @@ class PostsController < ApplicationController
 
   end
 
+  def create_comment
+    comment_params = params.require(:comment).permit(:body, :post_id)
+    @comment = Comment.create(comment_params)
+    post = Post.find(comment_params["post_id"])
+    respond_to do |f|
+      f.json { render :json => @comment, only: [:body]}
+    end
+
+  end
+
   def like_post
     like_params = params.require(:like).permit(:good, :likeable_id, :likeable_type)
     like = Like.create(like_params)

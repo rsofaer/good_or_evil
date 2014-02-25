@@ -1,4 +1,26 @@
 $(function(){
+
+  $('#addComment').on('submit', function(event){
+    event.preventDefault();
+    var new_comment = {};
+    new_comment.post_id  = this.dataset.id;
+    new_comment.body = $('#new_comment').val();
+    console.log(new_comment);
+    var _this = this;
+    $.ajax({
+      typ: 'post',
+      url: 'posts/'+new_comment.post_id+'/comments.json',
+      data: {comment: new_comment}
+    }).done(function(data){
+      console.log('comment added!');
+    });
+  });
+
+
+
+
+
+
   //onclick event for a post
   $('.item').on('click','.post', function(event){
   var like = {};
