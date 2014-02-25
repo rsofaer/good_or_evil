@@ -12,9 +12,9 @@ end
 
 
 #                   Prefix Verb   URI Pattern                    Controller#Action
-#         new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
-#             user_session POST   /users/sign_in(.:format)       devise/sessions#create
-#     destroy_user_session DELETE /users/sign_out(.:format)      devise/sessions#destroy
+#         new_user_session GET    /users/login(.:format)         devise/sessions#new
+#             user_session POST   /users/login(.:format)         devise/sessions#create
+#     destroy_user_session DELETE /users/logout(.:format)        devise/sessions#destroy
 #            user_password POST   /users/password(.:format)      devise/passwords#create
 #        new_user_password GET    /users/password/new(.:format)  devise/passwords#new
 #       edit_user_password GET    /users/password/edit(.:format) devise/passwords#edit
@@ -28,6 +28,7 @@ end
 #                          PUT    /users(.:format)               devise/registrations#update
 #                          DELETE /users(.:format)               devise/registrations#destroy
 #                     root GET    /                              posts#index
+#                  profile GET    /profile/:id(.:format)         site#show
 #                    posts GET    /posts(.:format)               posts#index
 #                          POST   /posts(.:format)               posts#create
 #                 new_post GET    /posts/new(.:format)           posts#new
@@ -36,3 +37,6 @@ end
 #                          PATCH  /posts/:id(.:format)           posts#update
 #                          PUT    /posts/:id(.:format)           posts#update
 #                          DELETE /posts/:id(.:format)           posts#destroy
+#                          POST   /posts/:id/like(.:format)      posts#like
+#                          POST   /posts/:id/comments(.:format)  posts#create_comment
+#            posts_preview POST   /posts/preview(.:format)       patients#preview

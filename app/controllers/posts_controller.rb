@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
     File.delete("#{Rails.root}/public#{@post.photo.url}")
 
-    render :json => @post, only: [:id, :text_overlay, :photo_link]
+    redirect_to root
 
   end
 
