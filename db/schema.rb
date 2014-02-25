@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140224044502) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "likes", force: true do |t|
-    t.boolean  "good"
+    t.boolean  "good?"
     t.integer  "likeable_id"
     t.string   "likeable_type"
     t.integer  "user_id"

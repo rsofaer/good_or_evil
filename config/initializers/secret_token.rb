@@ -9,4 +9,5 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-GoodOrEvil::Application.config.secret_key_base = ENV["SECRET_KEY_BASE"]
+GoodOrEvil::Application.config.secret_key_base = '906e8d6e1657356e9440bdb7eb1037e756f639423671b4bb3719c30eb1e0afa0bc93d97c2db3b9a73274f5638448c5c877f413bfccf08204cccf3f2910854066'
+
