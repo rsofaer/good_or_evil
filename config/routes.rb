@@ -5,7 +5,6 @@ GoodOrEvil::Application.routes.draw do
   get '/profile/:id', to: 'site#show', as: 'profile'
   resources :posts
   post '/posts/:id/like', to: 'posts#like'
-  # post '/comments/:id/like', to: 'posts#like'
   post '/posts/:id/comments', to: 'posts#create_comment'
 
   post'/posts/preview', to: 'patients#preview'
