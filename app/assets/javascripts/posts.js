@@ -14,13 +14,12 @@ $(function(){
     }).done(function(data){
       console.log('comment added!');
       console.log(_this);
-      $('#comment_container').append(data.body);
+      // $('#comment_container').append(data.body);
+
+      var commentHTML = HandlebarsTemplates.comment(data);
+      $("#comment_container").append(commentHTML);
     });
   });
-
-
-
-
 
 
   //onclick event for a post
@@ -67,7 +66,7 @@ $(function(){
     //making the ajax call to route specified with the comment id
     $.ajax({
       type: 'post', 
-      url: '/comments/'+like.likeable_id+'/like.json', 
+      url: '/posts/'+like.likeable_id+'/like.json', 
       data: {like: like}
     }).done(function(data){
         $(_this).find('.good_comment').text(data.good_count);

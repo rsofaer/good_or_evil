@@ -54,35 +54,41 @@ class PostsController < ApplicationController
     @comment = Comment.create(comment_params)
     post = Post.find(comment_params["post_id"])
     respond_to do |f|
-      f.html
+      # f.html
       f.json { render :json => @comment, only: [:id, :body, :post_id]}
     end
 
   end
 
-  def like_post
+  def like
     like_params = params.require(:like).permit(:good, :likeable_id, :likeable_type)
     like = Like.create(like_params)
-    post = Post.find(like_params["likeable_id"])
-    good_count = post.likes.where(good:true).count
-    evil_count = post.likes.where(good:false).count
+    if like_params["likeable_type"] == "Post"
+      post = Post.find(like_params["likeable_id"])
+      good_count = post.likes.where(good:true).count
+      evil_count = post.likes.where(good:false).count
+    elsif like_params["likeable_type"] == "Comment"
+      comment = Comment.find(like_params["likeable_id"])
+      good_count = comment.likes.where(good:true).count
+      evil_count = comment.likes.where(good:false).count
+    end
     @like_count = {good_count: good_count, evil_count: evil_count}
     respond_to do |f|
       f.json { render :json => @like_count }
     end
   end
 
-  def like_comment
-    like_params = params.require(:like).permit(:good, :likeable_id, :likeable_type)
-    like = Like.create(like_params)
-    comment = Comment.find(like_params["likeable_id"])
-    good_count = comment.likes.where(good:true).count
-    evil_count = comment.likes.where(good:false).count
-    @like_count = {good_count: good_count, evil_count: evil_count}
-    respond_to do |f|
-      f.json { render :json => @like_count }
-    end
-  end
+  # def like_comment
+  #   like_params = params.require(:like).permit(:good, :likeable_id, :likeable_type)
+  #   like = Like.create(like_params)
+  #   comment = Comment.find(like_params["likeable_id"])
+  #   good_count = comment.likes.where(good:true).count
+  #   evil_count = comment.likes.where(good:false).count
+  #   @like_count = {good_count: good_count, evil_count: evil_count}
+  #   respond_to do |f|
+  #     f.json { render :json => @like_count }
+  #   end
+  # end
 
 
   def edit
