@@ -14,7 +14,7 @@ $(function(){
     }).done(function(data){
       console.log('comment added!');
       console.log(_this);
-      $('.comments_'+ data.post_id).last().append(data.body);
+      $('#comment_container').append(data.body);
     });
   });
 
@@ -25,6 +25,7 @@ $(function(){
 
   //onclick event for a post
   $('.item').on('click','.post', function(event){
+    event.preventDefault();
   var like = {};
     //sets the good boolean to true or false based on button clicked
     if(event.target.id === "good"){
@@ -51,6 +52,7 @@ $(function(){
   });
   //onclick event for a comment
   $('.item').on('click','.comment', function(event){
+    event.preventDefault();
   var like = {};
     if(event.target.id === "good"){
       like.good = true;
