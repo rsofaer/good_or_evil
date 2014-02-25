@@ -8,11 +8,13 @@ $(function(){
     console.log(new_comment);
     var _this = this;
     $.ajax({
-      typ: 'post',
+      type: 'post',
       url: 'posts/'+new_comment.post_id+'/comments.json',
       data: {comment: new_comment}
     }).done(function(data){
       console.log('comment added!');
+      console.log(_this);
+      $('.comments_'+ data.post_id).last().append(data.body);
     });
   });
 

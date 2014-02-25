@@ -19,14 +19,18 @@
           <form id="addComment" data-id="<%=post.id%>">
             <input id="new_comment" type='text' name="comment[body]">
           </form>
+
           <h4>Comments</h4>
-          <% post.comments.each do |comment| %>
-            <div data-id="<%=comment.id%>"><%= comment.body %></div><br>
-            Good ratings: <div class="good_comment"><%= comment.likes.where(good: true).count %></div>
-            Evil ratings: <div class="evil_comment"><%= comment.likes.where(good: false).count %></div>
-            <button id="good">good</button>
-            <button id="evil">evil</button>
-          <% end %>
+
+            <% post.comments.each do |comment| %>
+            <div class="comments_<%=post.id%>">
+              <div class="comments" data-id="<%=comment.id%>"><%= comment.body %></div><br>
+              Good ratings: <div class="good_comment"><%= comment.likes.where(good: true).count %></div>
+              Evil ratings: <div class="evil_comment"><%= comment.likes.where(good: false).count %></div>
+              <button id="good">good</button>
+              <button id="evil">evil</button>
+            </div>
+            <% end %>
         </div>
         
         <% end %>

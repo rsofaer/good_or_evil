@@ -54,7 +54,7 @@ class PostsController < ApplicationController
     @comment = Comment.create(comment_params)
     post = Post.find(comment_params["post_id"])
     respond_to do |f|
-      f.json { render :json => @comment, only: [:body]}
+      f.json { render :json => @comment, only: [:body, :post_id]}
     end
 
   end
