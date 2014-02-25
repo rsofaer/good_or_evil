@@ -23,3 +23,14 @@ body,html{
 	color: #333;
 	text-align: center;
 }
+
+.post-text {
+    -webkit-text-fill-color: #FFFFFF;
+    -webkit-text-stroke-color: #000000;
+    -webkit-text-stroke-width: 3px;
+    text-fill-color: #FFFFFF;
+    text-stroke-color: #000000;
+    text-stroke-width: 3px;
+    font-size: 100px;
+}
+
