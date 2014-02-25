@@ -18,8 +18,7 @@ class PostsController < ApplicationController
 
   def create
     post_params = params.require(:post).permit(:text_overlay, :photo, :photo_link)
-    @post = current_user.posts.create(post_params)
-
+    @post = Post.create(post_params)
     AWS.config({
                  :access_key_id     => ENV['S3_KEY'],
                  :secret_access_key => ENV['S3_SECRET']
@@ -31,7 +30,7 @@ class PostsController < ApplicationController
     File.basename("public#{@post.photo.url}")
     bucket = s3.buckets[bucket_name]
     s3.buckets["goodevil"].objects[File.basename("public#{@post.photo.url}")].write(:file => "public#{@post.photo.url}")
-    @post.update_attributes(aws_url: "https://s3.amazonaws.com/goodevil/"+"#{@post.photo.filename}")
+    @post.update_attributes(photo_link: "https://s3.amazonaws.com/goodevil/"+"#{@post.photo.filename}")
 
     File.delete("#{Rails.root}/public#{@post.photo.url}")
 
