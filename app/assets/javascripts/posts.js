@@ -14,7 +14,7 @@ $(function(){
       data: {post: new_post}
     }).done(function(data){
       //prepend to some div
-      console.log('data');
+      console.log(data);
     });
   });
 
