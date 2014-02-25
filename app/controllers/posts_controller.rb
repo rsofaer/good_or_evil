@@ -32,11 +32,11 @@ class PostsController < ApplicationController
     s3.buckets["goodevil"].objects[File.basename("public#{@post.photo.url}")].write(:file => "public#{@post.photo.url}")
     @post.update_attributes(photo_link: "https://s3.amazonaws.com/goodevil/"+"#{@post.photo.filename}")
 
-    #File.delete("#{Rails.root}/public#{@post.photo.url}")
+    File.delete("#{Rails.root}/public#{@post.photo.url}")
 
     # not sure if this is the right place for the flash message but left it here to resolve merge conflict
     flash[:notice] = "Succesfully created a post."
-    binding.pry
+
     respond_to do |f|
       #f.html
       f.json { render :json => @post }
