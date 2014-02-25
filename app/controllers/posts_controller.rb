@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     flash[:notice] = "Succesfully created a post."
 
     respond_to do |f|
-      f.html { redirect_to @post }
+      #f.html
       f.json { render :json => @post }
     end
 

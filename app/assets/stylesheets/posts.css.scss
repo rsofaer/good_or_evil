@@ -4,33 +4,25 @@
 body,html{
     height:100%;
     width:100%;
-    background-color: rgba(52, 152, 219,1.0);
-    background: url('/assets/13.jpg') center center no-repeat;
+    background-color: rgba(236, 240, 241,1.0);
+    // background: url('/assets/13.jpg') center center no-repeat;
 
 }
 
-
-.off-canvas-wrap,.inner-wrap{
-    height:100%;   
+.title a {
+	margin-left: 2em;
+	color: #999;
 }
+
+span#good {
+	color: white;
+}
+
+span#evil {
+	color: black;
+}
+
 
 .container {
 	margin-top: 5em;
 }
-
-.right {
-	list-style-type: none;
-	color: #333;
-	text-align: center;
-}
-
-.post-text {
-    -webkit-text-fill-color: #FFFFFF;
-    -webkit-text-stroke-color: #000000;
-    -webkit-text-stroke-width: 3px;
-    text-fill-color: #FFFFFF;
-    text-stroke-color: #000000;
-    text-stroke-width: 3px;
-    font-size: 100px;
-}
-

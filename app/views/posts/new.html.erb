@@ -1,25 +1,39 @@
-<h1>New Post</h1>
-<br>
-<%= form_for(@post) do |f|  %>
-  <% unless @post.errors.count == 0   %>
-    <div class="alert alert-error">
-      The form contains
-      <%= pluralize(@user.errors.count, "error") %>.
-    </div>
-    <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li>*
-          <%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
-  <div><%= f.label :text_overlay %><br>
-    <%= f.text_area :text_overlay %></div>
-  <div><%= f.label :photo %><br>
-    <%= f.file_field :photo %></div><br>
-  <div>
-    <label for="post_photo">Mobile Uploads</label>
-    <input type="file" capture="camera" accept="image/*" id="post_photo" name="post[photo]">
-  </div>
-  <div><%= f.submit "Create my post", class: "form_button" %></div>
-<% end %>
+<div class="container">
+  <div class="row">        
+      <div class="small-10 small-centered medium-8 medium-centered large-8 large centered columns">
+        <div id="myModal" class='reveal-modal' data-reveal>
+          <form action="" id="newPost">
+            <h1>New Post</h1>
+            <%= form_for(@post) do |f|  %>
+              <% unless @post.errors.count == 0   %>
+                <div class="alert alert-error">
+                  The form contains
+                  <%= pluralize(@user.errors.count, "error") %>.
+                </div>
+                <ul>
+                  <% @post.errors.full_messages.each do |msg| %>
+                    <li>*
+                      <%= msg %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+              <div><%#= f.label :text_overlay %><br>
+                <%#= f.text_area :text_overlay %></div>
+              <div><%#= f.label :photo %><br>
+                <%#= f.file_field :photo %></div><br>
+              <div>
+                <input type="file" id='imageLoader' name='imageLoader' accept="image/*; capture=camera">
+                <!-- <label for="post_photo">Mobile Uploads</label> -->
+                <!-- <input type="file" capture="camera" accept="image/*" id="post_photo" name="post[photo]"> -->
+              </div>
+              <canvas id="imageCanvas"></canvas>
+              <input id="newPost" type="text" name="postTile">
+              <button id="submitPost">Submit</button>
+              <!-- <div><%#= f.submit "Create my post", class: "form_button" %></div> -->
+            <% end %>
+             <a class="close-reveal-modal">&#215;</a>
+           </form>
+          </div>
+      </div>
+  </div>  
+</div>
