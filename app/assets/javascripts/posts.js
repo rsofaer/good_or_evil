@@ -1,5 +1,23 @@
 $(function(){
 
+  $('#addPost').on('submit', function(event){
+    event.preventDefault();
+    var new_post = {};
+    new_post.text_overlay = $('#newText').val();
+    //how do we grab photo info?
+    new_post.photo = $('#imageLoader').val();
+    console.log(new_post);
+    var _this = this;
+    $.ajax({
+      type:'post',
+      url:'/posts.json',
+      data: {post: new_post}
+    }).done(function(data){
+      //prepend to some div
+      console.log('data');
+    });
+  });
+
   $('#addComment').on('submit', function(event){
     event.preventDefault();
     var new_comment = {};
@@ -9,7 +27,7 @@ $(function(){
     var _this = this;
     $.ajax({
       type: 'post',
-      url: 'posts/'+new_comment.post_id+'/comments.json',
+      url: '/posts/'+new_comment.post_id+'/comments.json',
       data: {comment: new_comment}
     }).done(function(data){
       console.log('comment added!');
