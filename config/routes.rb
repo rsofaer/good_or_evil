@@ -4,6 +4,8 @@ GoodOrEvil::Application.routes.draw do
   root :to => "posts#index"
   resources :posts
 
+  post'/posts/preview', to: 'patients#preview'
+
 end
 
 

@@ -12,6 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.masonry
+//= require jquery.event-drag
+//= require jquery.imagesloaded.min
+//= require jquery.infinitescroll.min
+//= require modernizr-transitions
 //= require foundation
 //= require turbolinks
 //= require_tree .

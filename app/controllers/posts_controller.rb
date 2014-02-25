@@ -13,10 +13,10 @@ class PostsController < ApplicationController
   def create
     post_params = params.require(:post).permit(:text_overlay, :photo, :photo_link)
     @post = current_user.posts.create(post_params)
-    #The AWS code establishes credentials to access the S3 storage.
+
     AWS.config({
-                 :access_key_id     => 'AKIAI6AECUXY23A6B56Q',
-                 :secret_access_key => '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'
+                 :access_key_id     => ENV['S3_KEY'],
+                 :secret_access_key => ENV['S3_SECRET']
     })
     #The s3 variable is creating a new connection to the S3 cloud storage.
     s3 = AWS::S3.new
@@ -26,10 +26,11 @@ class PostsController < ApplicationController
     bucket = s3.buckets[bucket_name]
     s3.buckets["goodevil"].objects[File.basename("public#{@post.photo.url}")].write(:file => "public#{@post.photo.url}")
     @post.update_attributes(aws_url: "https://s3.amazonaws.com/goodevil/"+"#{@post.photo.filename}")
-    #need to manually set the amazon url, because carrierwave default is the public folder url.
-    #Then the file gets deleted from the public folder.
-    redirect_to @post
+
     File.delete("#{Rails.root}/public#{@post.photo.url}")
+
+    redirect_to @post
+    flash[:notice] = "Succesfully created a post."
 
   end
 
@@ -42,6 +43,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post = Post.find(params[:id])
   end
 
   def destroy
