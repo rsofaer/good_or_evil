@@ -23,19 +23,17 @@
             <ul class="right">
               <li class="divider data-no-turbolink"></li>
               <li><%= link_to "Home", posts_path %></li>
-              <li class="divider data-no-turbolink"></li>
-              <li><%= link_to "Sign Up",  new_post_path %></li>
-              <li class="divider data-no-turbolink"></li>
-              <li><%= link_to "Sign In", posts_path %></li>
-              <li class="divider data-no-turbolink"></li>
-              <li><%= link_to "Sign Out", root_path %></li>
-              <li class="divider data-no-turbolink"></li>
-              <li><%= link_to "Profile", posts_path %></li>
+              <% if user_signed_in? %>
+                <li class="divider data-no-turbolink"></li>
+                <li><%= link_to "Profile", posts_path %></li>
+              <% else %>
+                <li class="divider data-no-turbolink"></li>
+                <li><%= link_to "Sign In", new_user_session_path %></li>
+                <li class="divider data-no-turbolink"></li>
+                <li><%= link_to "Sign Up", new_user_registration_path %></li>
+              <% end %>
             </ul>    
           </aside>
-    
-
-
 
           <%= yield %>
           <p class="notice"><%= notice %></p>
