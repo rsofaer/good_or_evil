@@ -4,22 +4,26 @@
 body,html{
     height:100%;
     width:100%;
-    background-color: rgba(52, 152, 219,1.0);
-    background: url('/assets/13.jpg') center center no-repeat;
+    background-color: rgba(236, 240, 241,1.0);
+    // background: url('/assets/13.jpg') center center no-repeat;
 
 }
 
-
-.off-canvas-wrap,.inner-wrap{
-    height:100%;   
+.title a {
+	margin-left: 2em;
+	color: #999;
 }
+
+span#good {
+	color: white;
+}
+
+span#evil {
+	color: black;
+}
+
 
 .container {
 	margin-top: 5em;
 }
 
-.right {
-	list-style-type: none;
-	color: #333;
-	text-align: center;
-}

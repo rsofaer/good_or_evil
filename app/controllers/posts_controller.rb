@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     File.delete("#{Rails.root}/public#{@post.photo.url}")
 
     respond_to do |f|
-      # f.html
+      #f.html
       f.json { render :json => @post }
     end
 
