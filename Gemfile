@@ -35,6 +35,7 @@ group :doc do
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'pry'
   gem 'pry-rails'
   gem 'rspec-rails'
