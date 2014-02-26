@@ -26,3 +26,25 @@ span#evil {
 .container {
 	margin-top: 5em;
 }
+
+
+.wrap {
+    width: auto;
+    height:auto;
+    margin: auto;
+    position:relative;
+}
+.post-text {
+    position: absolute;
+ margin: auto;
+ font-size: 64px;
+    top: 0;
+    left:0;
+    right:0;
+    bottom:0;
+    color:#fff;
+   height:100px;
+ -webkit-text-fill-color: white;
+        -webkit-text-stroke: 2px black;
+  
+}
