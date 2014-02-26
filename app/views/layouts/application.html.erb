@@ -19,13 +19,13 @@
             <!-- right side of nav -->
             <ul class='right'>
               <li class="sign-up">
-                <%= link_to "Sign Up",  new_post_path %>
+                <%= link_to "Sign Up", new_post_path %>
               </li>
               <li class="sign-in">
                 <%= link_to "Sign In", posts_path %>
               </li>
               <li class="profile">
-                <%= link_to "Profile", posts_path %>
+                <%= link_to "Profile", profile_path(current_user.id) %>
               </li>
               <li class="new-post">
                 <a href="#" data-reveal-id="myModal" data-reveal>New Post</a>
