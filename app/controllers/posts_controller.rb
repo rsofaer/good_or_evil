@@ -5,6 +5,9 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @post = Post.new
+
+
+
     # respond_to do |f|
     #   # f.html
     #   f.json { render :json => @post }
@@ -20,7 +23,6 @@ class PostsController < ApplicationController
     post = Post.create(post_params)
 
     ImageWorker.perform_async(post.id)
-
     current_user.posts << post # adding posts to current_user
     redirect_to root_path
     
