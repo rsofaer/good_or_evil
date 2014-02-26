@@ -1,22 +1,35 @@
 $(function(){
 
-  // $('#addPost').on('submit', function(event){
-  //   event.preventDefault();
-  //   var new_post = {};
-  //   new_post.text_overlay = $('#newText').val();
-  //   //how do we grab photo info?
-  //   new_post.photo = $('#imageLoader').val();
-  //   console.log(new_post);
-  //   var _this = this;
-  //   $.ajax({
-  //     type:'post',
-  //     url:'/posts.json',
-  //     data: {post: new_post}
-  //   }).done(function(data){
-  //     //prepend to some div
-  //     console.log(data);
-  //   });
-  // });
+
+  var chart = new CanvasJS.Chart("chartContainer",
+    {
+    title:{
+      text: "title"             
+    },
+    axisY:{
+      title: "percent"
+    },
+    data:[
+    {        
+      type: "stackedBar100",
+      showInLegend: true, 
+      name: "Good",
+      dataPoints: [
+      {y: 600, label: "Good" },
+      ]
+    },
+    {        
+      type: "stackedBar100",
+      showInLegend: true, 
+      name: "Evil",
+      dataPoints: [
+      {y: 400, label: "Evil" },
+      ]
+    },   
+    ]
+
+  });
+  chart.render();
 
   $('.addComment').on('submit', function(event){
     event.preventDefault();
