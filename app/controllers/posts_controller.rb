@@ -5,23 +5,25 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @post = Post.new
+    # respond_to do |f|
+    #   # f.html
+    #   f.json { render :json => @post }
+    # end
   end
 
   def new
     @post = current_user.posts.new
   end
 
-
   def create
     post_params = params.require(:post).permit(:text_overlay, :photo, :photo_link)
     post = Post.create(post_params)
 
-    ImagesWorker.perform_async(post.id)
+    ImageWorker.perform_async(post.id)
 
     current_user.posts << post # adding posts to current_user
-
     redirect_to root_path
-
+    
   end
   
   def show
