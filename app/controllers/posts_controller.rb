@@ -19,6 +19,7 @@ class PostsController < ApplicationController
 
     ImagesWorker.perform_async(post.id)
 
+    current_user.posts << post # adding posts to current_user
     redirect_to root
 
   end
@@ -31,6 +32,7 @@ class PostsController < ApplicationController
   def create_comment
     comment_params = params.require(:comment).permit(:body, :post_id)
     @comment = Comment.create(comment_params)
+    current_user.comments << @comment  # adding comments to current_user
     post = Post.find(comment_params["post_id"])
     respond_to do |f|
       # f.html
@@ -41,16 +43,19 @@ class PostsController < ApplicationController
 
   def like
     like_params = params.require(:like).permit(:good, :likeable_id, :likeable_type)
+    like_params["user_id"]=current_user.id # adding likes to current_user
     like = Like.create(like_params)
-    if like_params["likeable_type"] == "Post"
-      post = Post.find(like_params["likeable_id"])
-      good_count = post.likes.where(good:true).count
-      evil_count = post.likes.where(good:false).count
-    elsif like_params["likeable_type"] == "Comment"
-      comment = Comment.find(like_params["likeable_id"])
-      good_count = comment.likes.where(good:true).count
-      evil_count = comment.likes.where(good:false).count
-    end
+
+      if like_params["likeable_type"] == "Post"
+        post = Post.find(like_params["likeable_id"])
+        good_count = post.likes.where(good:true).count
+        evil_count = post.likes.where(good:false).count
+      elsif like_params["likeable_type"] == "Comment"
+        comment = Comment.find(like_params["likeable_id"])
+        good_count = comment.likes.where(good:true).count
+        evil_count = comment.likes.where(good:false).count
+      end
+
     @like_count = {good_count: good_count, evil_count: evil_count}
     respond_to do |f|
       f.json { render :json => @like_count }
