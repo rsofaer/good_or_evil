@@ -7,8 +7,6 @@ GoodOrEvil::Application.routes.draw do
   post '/posts/:id/like', to: 'posts#like'
   post '/posts/:id/comments', to: 'posts#create_comment'
 
-  post'/posts/preview', to: 'patients#preview'
-
 end
 
 
