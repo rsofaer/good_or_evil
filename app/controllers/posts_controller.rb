@@ -4,7 +4,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-
     # respond_to do |f|
     #   # f.html
     #   f.json { render :json => @post }
@@ -18,28 +17,12 @@ class PostsController < ApplicationController
 
   def create
     post_params = params.require(:post).permit(:text_overlay, :photo, :photo_link)
-    @post = Post.create(post_params)
-    AWS.config({
-                 :access_key_id     => ENV['S3_KEY'],
-                 :secret_access_key => ENV['S3_SECRET']
-    })
-    #The s3 variable is creating a new connection to the S3 cloud storage.
-    s3 = AWS::S3.new
-    bucket_name = "goodevil" #This is the repository for images on the amazon account.
-    "public#{@post.photo.url}"
-    File.basename("public#{@post.photo.url}")
-    bucket = s3.buckets[bucket_name]
-    s3.buckets["goodevil"].objects[File.basename("public#{@post.photo.url}")].write(:file => "public#{@post.photo.url}")
-    @post.update_attributes(photo_link: "https://s3.amazonaws.com/goodevil/"+"#{@post.photo.filename}")
+    post = Post.create(post_params)
 
-    File.delete("#{Rails.root}/public#{@post.photo.url}")
+    ImageWorker.perform_async(post.id)
+    redirect_to root_path
 
-    # not sure if this is the right place for the flash message but left it here to resolve merge conflict
-    flash[:notice] = "Succesfully created a post."
 
-    respond_to do |f|
-      f.json { render :json { :only => :id}.to_json }
-    end
   end
 
   def show

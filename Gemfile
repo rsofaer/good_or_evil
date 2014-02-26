@@ -51,7 +51,7 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem 'sidekiq'
+gem 'sidekiq', '2.17.4'
 
 gem 'carrierwave' # (0.9.0)
 
