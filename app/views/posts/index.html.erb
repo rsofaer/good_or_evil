@@ -14,8 +14,14 @@
             </div>
             Good ratings:
             <div class="good_post"><%= post.likes.where(good: true).count %></div>
+            <div id="halo"></div>
+            <div class="circle-body"></div>
             Evil ratings:
             <div class="evil_post"><%= post.likes.where(good: false).count %></div>
+            <div class="circle-body" id="devil">
+              <div id="devil-horn-left"></div>
+              <div id="devil-horn-right"></div>
+            </div>
             <br>
             <button id="good">good</button>
             <button id="evil">evil</button>
