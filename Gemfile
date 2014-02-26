@@ -69,6 +69,7 @@ gem "figaro"
 
 gem 'carrierwave-aws'
 
+gem 'kaminari'
 
 gem 'mini_magick'
 
