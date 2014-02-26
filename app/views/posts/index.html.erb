@@ -3,7 +3,6 @@
     <div class="small-8 small-centered medium-4 medium-centered large-4 large-centered columns">
       <h1>Newsfeed</h1>
       <div class="item">
-
         <% @posts.each do |post| %>
           <div class="post" data-id="<%=post.id%>">
             <div><img src="<%=post.photo_link%><%=post.photo.file.original_filename%>"></div><br>
