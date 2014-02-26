@@ -69,7 +69,6 @@ gem "figaro"
 
 gem 'carrierwave-aws'
 
-
 gem 'mini_magick'
 
 gem 'handlebars_assets'
@@ -79,6 +78,9 @@ group :development do
   gem 'rails_layout'
 end
 
+gem 'unicorn'
+
+gem 'unicorn-rails', :groups => [:development, :test]
 
 gem 'rails_12factor', group: :production
 
