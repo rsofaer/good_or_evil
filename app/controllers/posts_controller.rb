@@ -4,8 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-
-
+    @post = Post.new
   end
 
   def new
@@ -19,10 +18,10 @@ class PostsController < ApplicationController
 
     ImagesWorker.perform_async(post.id)
 
-    redirect_to root
+    redirect_to root_path
 
   end
-
+  
   def show
     @post = Post.find(params[:id])
 
