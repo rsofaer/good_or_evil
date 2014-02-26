@@ -5,16 +5,13 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
 
-    # respond_to do |f|
-    #   # f.html
-    #   f.json { render :json => @post }
-    # end
 
   end
 
   def new
     @post = current_user.posts.new
   end
+
 
   def create
     post_params = params.require(:post).permit(:text_overlay, :photo, :photo_link)
@@ -34,13 +31,7 @@ class PostsController < ApplicationController
 
     File.delete("#{Rails.root}/public#{@post.photo.url}")
 
-    # not sure if this is the right place for the flash message but left it here to resolve merge conflict
-    flash[:notice] = "Succesfully created a post."
-
-    respond_to do |f|
-      #f.html
-      f.json { render :json => @post }
-    end
+    redirect_to root
 
   end
 
@@ -77,18 +68,6 @@ class PostsController < ApplicationController
       f.json { render :json => @like_count }
     end
   end
-
-  # def like_comment
-  #   like_params = params.require(:like).permit(:good, :likeable_id, :likeable_type)
-  #   like = Like.create(like_params)
-  #   comment = Comment.find(like_params["likeable_id"])
-  #   good_count = comment.likes.where(good:true).count
-  #   evil_count = comment.likes.where(good:false).count
-  #   @like_count = {good_count: good_count, evil_count: evil_count}
-  #   respond_to do |f|
-  #     f.json { render :json => @like_count }
-  #   end
-  # end
 
 
   def edit

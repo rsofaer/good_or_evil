@@ -15,9 +15,9 @@
         <button id="evil">evil</button>
         </div>
 
-        <div id="comment_container" data-id="<%=post.id%>">
-          <form id="addComment" data-id="<%=post.id%>">
-            <input id="new_comment" type="text">
+        <div id="comment_container_<%=post.id%>" data-id="<%=post.id%>">
+          <form class="addComment" data-id="<%=post.id%>">
+            <input id="new_comment_<%=post.id%>" type="text">
           </form>
 
           <h4>Comments</h4>
@@ -39,5 +39,8 @@
     </div>
   </div>
 </div>
+
+
+
 
 
