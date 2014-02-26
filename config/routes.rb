@@ -11,8 +11,7 @@ GoodOrEvil::Application.routes.draw do
 
 end
 
-
-#                   Prefix Verb   URI Pattern                    Controller#Action
+#      Prefix Verb   URI Pattern                    Controller#Action
 #         new_user_session GET    /users/login(.:format)         devise/sessions#new
 #             user_session POST   /users/login(.:format)         devise/sessions#create
 #     destroy_user_session DELETE /users/logout(.:format)        devise/sessions#destroy
@@ -38,6 +37,6 @@ end
 #                          PATCH  /posts/:id(.:format)           posts#update
 #                          PUT    /posts/:id(.:format)           posts#update
 #                          DELETE /posts/:id(.:format)           posts#destroy
+#                          POST   /posts(.:format)               posts#create
 #                          POST   /posts/:id/like(.:format)      posts#like
 #                          POST   /posts/:id/comments(.:format)  posts#create_comment
-#            posts_preview POST   /posts/preview(.:format)       patients#preview

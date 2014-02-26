@@ -20,11 +20,11 @@
             <!-- right side of nav -->
             <ul class='right'>
               <li class="sign-up">
-                <%= link_to "Sign Up", new_post_path %>
+                <%= link_to "Sign Up", post_paths %>
               </li>
               <li class="sign-in">
                 <%= link_to "Sign In", posts_path %>
-              </li>
+              </li> 
               <li class="profile">
                 <%= link_to "Profile", root_path %>
               </li>
@@ -36,6 +36,8 @@
         </nav>
       </div>
         <%= render 'posts/new' %>
+        <%= render 'shared/login' %>
+        <%= render 'shared/signup' %>
           <%= yield %>
           <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p>
