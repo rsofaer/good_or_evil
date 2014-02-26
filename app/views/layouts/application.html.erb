@@ -19,11 +19,11 @@
           <section class='top-bar-section'>
             <!-- right side of nav -->
             <ul class='right'>
-              <li class="sign-up">
-                <%= link_to "Sign Up", post_paths %>
+              <li class="sign-up" data-reveal-id="signupModal" data-reveal>
+                <%= link_to "Sign Up", new_user_registration_path %>
               </li>
-              <li class="sign-in">
-                <%= link_to "Sign In", posts_path %>
+              <li class="sign-in" data-reveal-id"loginModal" data-reveal>
+                <%= link_to "Sign In", user_session_path %>
               </li> 
               <li class="profile">
                 <%= link_to "Profile", root_path %>
@@ -36,8 +36,8 @@
         </nav>
       </div>
         <%= render 'posts/new' %>
-        <%= render 'shared/login' %>
-        <%= render 'shared/signup' %>
+        <%= render 'devise/shared/login' %>
+        <%= render 'devise/shared/signup' %>
           <%= yield %>
           <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p>
