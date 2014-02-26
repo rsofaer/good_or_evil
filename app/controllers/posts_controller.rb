@@ -20,7 +20,6 @@ class PostsController < ApplicationController
     post = Post.create(post_params)
     img = Magick::ImageList.new("#{Rails.root}/public#{post.photo.url}")
     txt = Magick::Draw.new
-    binding.pry
 
     txt.annotate(img, 0, 0, 0, 60, "#{post.text_overlay}") {
       self.gravity = Magick::SouthGravity

@@ -1,6 +1,6 @@
 $(function(){
 
-
+return;
   var chart = new CanvasJS.Chart("chartContainer",
     {
     title:{
