@@ -4,8 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-
-
+    @post = Post.new
   end
 
   def new
@@ -20,10 +19,11 @@ class PostsController < ApplicationController
     ImagesWorker.perform_async(post.id)
 
     current_user.posts << post # adding posts to current_user
-    redirect_to root
+
+    redirect_to root_path
 
   end
-
+  
   def show
     @post = Post.find(params[:id])
 
