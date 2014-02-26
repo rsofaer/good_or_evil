@@ -3,11 +3,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.all
+    @posts = Post.order(:created_at).page params[:page]
     @post = Post.new
-
-
-
     # respond_to do |f|
     #   # f.html
     #   f.json { render :json => @post }
@@ -21,7 +18,20 @@ class PostsController < ApplicationController
   def create
     post_params = params.require(:post).permit(:text_overlay, :photo, :photo_link)
     post = Post.create(post_params)
+    img = Magick::ImageList.new("#{Rails.root}/public#{post.photo.url}")
+    txt = Magick::Draw.new
 
+    txt.annotate(img, 0, 0, 0, 60, "#{post.text_overlay}") {
+      self.gravity = Magick::SouthGravity
+      self.pointsize = 48
+      self.stroke = 'black'
+      self.fill = '#ffffff'
+      self.font_weight = Magick::BoldWeight
+    }
+    img.write("#{Rails.root}/public#{post.photo.url}")
+
+
+    img.format = 'jpeg'
     ImageWorker.perform_async(post.id)
     current_user.posts << post # adding posts to current_user
     redirect_to root_path

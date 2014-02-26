@@ -69,6 +69,8 @@ gem "figaro"
 
 gem 'carrierwave-aws'
 
+gem 'kaminari'
+
 gem 'mini_magick'
 
 gem 'handlebars_assets'
