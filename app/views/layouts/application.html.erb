@@ -27,14 +27,14 @@
               <li class="profile">
                 <%= link_to "Profile", root_path %>
               </li>
-              <li class="new-post">
-                <a href="#" data-reveal-id="myModal" data-reveal>New Post</a>
+              <li class="new-post" data-reveal-id="myModal" data-reveal>
+                <%= link_to "New Post", posts_path %>
               </li>
             </ul>
           </section>
         </nav>
       </div>
-      
+        <%= render 'posts/new' %>
           <%= yield %>
           <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p>
