@@ -43,7 +43,7 @@
 		height: 100%;
 	  background: rgba(#ffffff, 0.0);
 	  padding: 0;
-	  border: 1px solid black;
+	 
 		margin: 0 auto;
 	  /* optional */
 	  -webkit-border-radius: 5px;
@@ -118,3 +118,8 @@
 	.clearfix:before, .clearfix:after { content: ""; display: table; }
 	.clearfix:after { clear: both; }
 	.clearfix { zoom: 1; }
+
+
+
+
+
