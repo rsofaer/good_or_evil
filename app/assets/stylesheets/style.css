@@ -1,24 +1,27 @@
 /*** These are not needed */
-	html {
+/*	html {
 		width:100%;
 		height:100%;
 		overflow-y:scroll;
 	}
+*/
 	body {
 		position:relative;
 		width:100%;
 		height:100%;
 		padding:0;
 		margin:0;
-		background: url(/assets/13.jpg);
 		font-family:"Trebuchet MS","Arial", Helvetica, sans-serif;
 		font-weight:normal;
 		font-style:normal;
 		line-height:1;
 	}
 	div { 
-		position:relative; 
-		
+		position:relative; 	
+	}
+
+	div.post_container {
+		background: url(/assets/13.jpg);
 	}
 	
 	/*hr { display:block;float:none;clear:both;margin:1em auto;color:#ccc;border:solid #ccc;border-width:1px 0 0;height:0;padding:0; }*/
@@ -118,6 +121,24 @@
 	.clearfix:before, .clearfix:after { content: ""; display: table; }
 	.clearfix:after { clear: both; }
 	.clearfix { zoom: 1; }
+
+/* LANDING PAGE */
+
+.site_container {
+	width: 100%;
+	height: 100%;
+	background-size: 100%;
+	background-size: cover;
+	-webkit-width: background-size: cover;
+	-moz-width: background-size: cover;
+	-ms-width: background-size: cover;
+	-o-width: background-size: cover;
+	width: background-size: cover;
+	margin-top: 0;
+	background-color: black;
+	background: url("/assets/newyork.jpg") center center no-repeat;
+}
+
 
 
 
