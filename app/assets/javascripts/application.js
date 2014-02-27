@@ -3,7 +3,13 @@
 //= require handlebars.runtime
 //= require foundation/foundation
 //= require foundation/foundation.reveal
+//= jquery.masonry
+//= modernizer-transitions 
+//= zepto
 //= require_tree .
+
+
+
 
 $(function(){ $(document).foundation({
   animation: 'fadeAndPop',
