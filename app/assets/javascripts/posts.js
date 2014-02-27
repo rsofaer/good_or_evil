@@ -16,11 +16,15 @@ var makeChart = function(index, value){
     axisX:{
     lineThickness: 0,
     gridThickness: 0,
+    valueFormatString: "",
+    tickLength: 0,
     lineColor: "none"
     },
     axisY:{
     lineThickness: 0,
     gridThickness: 0,
+    valueFormatString: "",
+    tickLength: 0,
     lineColor: "none"
     },
     colorSet: "goodorevil",
@@ -42,7 +46,7 @@ var makeChart = function(index, value){
       labelFontSize: "none",
       tickThickness: 0,
       dataPoints: [
-      {y: value.evil_count, label: "EVIL" },
+      {y: value.evil_count},
       ]
       }       
     ]
