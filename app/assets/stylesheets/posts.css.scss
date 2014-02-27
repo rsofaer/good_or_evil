@@ -10,57 +10,22 @@ body,html{
 }
 
 .title a {
-	margin-left: 2em;
-	color: #999;
+margin-left: 2em;
+color: #999;
 }
 
 span#good {
-	color: white;
+color: white;
 }
 
 span#evil {
-	color: black;
+color: black;
 }
 
 
 .container {
-	margin-top: 5em;
-}
-
-.circle-body {
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	background: white;
-	border: 3px solid #000000;
-}
-
-#halo {
-	width: 45px;
-	height: 15px;
-	margin-left: 2px;
-	margin-bottom: 2px;
-	background: white;
-	border: 3px solid #000000;
-	-moz-border-radius: 45px / 15px;
-	-webkit-border-radius: 45px / 15px;
-	border-radius: 45px / 15px;
+margin-top: 5em;
+width:100%
 }
 
 
-
-#devil-horn-left {
-	width: 0;
-	height: 0;
-	border-top: 20px solid red;
-	border-right: 20px solid transparent;
-
-}
-
-#devil-horn-right {
-width: 0;
-	height: 25px;
-	border-top: 20px solid red;
-	border-left: 20px solid transparent;
-
-}

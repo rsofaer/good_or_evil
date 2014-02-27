@@ -10,6 +10,9 @@
  *
  *= require_self
  *= require foundation_and_overrides
-
+ *= foundation_masonry
+ *= normalize
+ *= style
  *= require_tree .
  */
+
