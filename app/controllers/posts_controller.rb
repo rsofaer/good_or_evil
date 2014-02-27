@@ -4,22 +4,14 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order(:created_at).page params[:page]
-    @a_post = Post.find(10)
-    # gon.post = @a_post.attributes
-    # @posts.each do |x|
-    #   gon.good = x.likes.where(good:true).count
-    #   gon.evil = x.likes.where(good:false).count
-    # end
-    gon.good = @a_post.likes.where(good:true).count
-    gon.evil = @a_post.likes.where(good:false).count
-    
-    # gon.post = @post.attrbutes
 
+    gon.posts = @posts.map do |post|
+      {id: post.id, 
+      good: post.likes.where(good:true).count,
+      evil: post.likes.where(good:false).count}
+    end
+   
     @post = Post.new
-    # respond_to do |f|
-    #   # f.html
-    #   f.json { render :json => @post }
-    # end
   end
 
   def new
@@ -75,8 +67,6 @@ class PostsController < ApplicationController
         post = Post.find(like_params["likeable_id"])
         good_count = post.likes.where(good:true).count
         evil_count = post.likes.where(good:false).count
-        # gon.good = good_count
-        # gon.evil = good_count
       elsif like_params["likeable_type"] == "Comment"
         comment = Comment.find(like_params["likeable_id"])
         good_count = comment.likes.where(good:true).count
