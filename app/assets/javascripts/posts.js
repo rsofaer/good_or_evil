@@ -5,9 +5,9 @@ $(function(){
                 "grey",
                 "#000000"                
                 ]);
- // var createCharts = function(){
+var makeChart = function(index, value){
   
-  var chart = new CanvasJS.Chart("chartContainer",
+  var chart = new CanvasJS.Chart("chartContainer_"+value.id,
   {
     title:{
       // text: ""             
@@ -29,39 +29,37 @@ $(function(){
     {        
       type: "stackedBar100",
       showInLegend: false, 
-      // name: "Good",
-      // color: "grey",
       labelFontColor: "none",
       labelFontSize: "none",
       tickThickness: 0,
       dataPoints: [
-      {y: gon.good, label: "Good" },
+      {y: value.good, label: "Good" },
       ]
     },
     {        
       type: "stackedBar100",
       showInLegend: false, 
-      // name: "Evil",
-      // color: "black",
       labelFontColor: "none",
       labelFontSize: "none",
       tickThickness: 0,
       dataPoints: [
-      {y: gon.evil, label: "EVIL" },
+      {y: value.evil, label: "EVIL" },
       ]
     }       
     ]
 
   });
   chart.render();
-  // console.log(gon.good);
-  // console.log(gon.evil);
-// };
 
-  // gon.post.each(function(event){
-  //   // call a function for chart
+};
 
-  // });
+
+ $.each(gon.posts, makeChart);
+
+
+
+
+
 
   $('.addComment').on('submit', function(event){
     event.preventDefault();

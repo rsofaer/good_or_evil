@@ -12,6 +12,12 @@ class PostsController < ApplicationController
     # end
     gon.good = @a_post.likes.where(good:true).count
     gon.evil = @a_post.likes.where(good:false).count
+
+    gon.posts = @posts.map do |post|
+      {id: post.id, 
+      good: post.likes.where(good:true).count,
+      evil: post.likes.where(good:false).count}
+    end
     
     # gon.post = @post.attrbutes
 
