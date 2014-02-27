@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   def create
     post_params = params.require(:post).permit(:text_overlay, :photo, :photo_link)
     post = Post.create(post_params)
-
+    #don't know why blankimage worker can't get the updated url, but works here....
     if post.photo.file.nil?
       img = Magick::Image.new(360,480) {
         self.background_color = "gray"
