@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order(:created_at).page params[:page]
-    @a_post = Post.find(12)
+    @a_post = Post.find(10)
     # gon.post = @a_post.attributes
     # @posts.each do |x|
     #   gon.good = x.likes.where(good:true).count
@@ -75,11 +75,14 @@ class PostsController < ApplicationController
         post = Post.find(like_params["likeable_id"])
         good_count = post.likes.where(good:true).count
         evil_count = post.likes.where(good:false).count
+        # gon.good = good_count
+        # gon.evil = good_count
       elsif like_params["likeable_type"] == "Comment"
         comment = Comment.find(like_params["likeable_id"])
         good_count = comment.likes.where(good:true).count
         evil_count = comment.likes.where(good:false).count
       end
+
 
     @like_count = {good_count: good_count, evil_count: evil_count}
     respond_to do |f|
