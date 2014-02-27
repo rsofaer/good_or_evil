@@ -62,19 +62,18 @@ class PostsController < ApplicationController
     like_params = params.require(:like).permit(:good, :likeable_id, :likeable_type)
     like_params["user_id"]=current_user.id # adding likes to current_user
     like = Like.create(like_params)
-
       if like_params["likeable_type"] == "Post"
         post = Post.find(like_params["likeable_id"])
-        good_count = post.likes.where(good:true).count
-        evil_count = post.likes.where(good:false).count
-        @like_count = {good_count: good_count, evil_count: evil_count, id: post.id}
+        post_good_count = post.likes.where(good:true).count
+        post_evil_count = post.likes.where(good:false).count
+        @like_count = {good_count: post_good_count, evil_count: post_evil_count, id: post.id}
       elsif like_params["likeable_type"] == "Comment"
         comment = Comment.find(like_params["likeable_id"])
-        good_count = comment.likes.where(good:true).count
-        evil_count = comment.likes.where(good:false).count
-        @like_count = {good_count: good_count, evil_count: evil_count}
+        comment_good_count = comment.likes.where(good:true).count
+        comment_evil_count = comment.likes.where(good:false).count
+        @like_count = {good_count: comment_good_count, evil_count: comment_evil_count}
       end
-    
+  
     respond_to do |f|
       f.json { render :json => @like_count }
     end

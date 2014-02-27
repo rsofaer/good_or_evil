@@ -77,6 +77,7 @@ var makeChart = function(index, value){
   //onclick event for a post
   $('.item').on('click','.post', function(event){
     event.preventDefault();
+    console.log('clicked post');
   var like = {};
     //sets the good boolean to true or false based on button clicked
     if(event.target.id === "good"){
@@ -87,7 +88,8 @@ var makeChart = function(index, value){
     }
     like.likeable_type = "Post";
     like.likeable_id = this.dataset.id;
-
+    // console.log(this);
+    // console.log(like);
   var _this = this;
     //making the ajax call to route specified with the post id
     $.ajax({
@@ -95,6 +97,7 @@ var makeChart = function(index, value){
       url: '/posts/'+like.likeable_id+'/like.json', 
       data: {like: like}
     }).done(function(data){
+      console.log(data);
         //ajax response includes good and evil count
         $(_this).find('.good_post').text(data.good_count);
         $(_this).find('.evil_post').text(data.evil_count);
@@ -106,23 +109,25 @@ var makeChart = function(index, value){
   //onclick event for a comment
   $('.item').on('click','.comment', function(event){
     event.preventDefault();
-  var like = {};
+    console.log('clicked comment');
+  var like_comment = {};
     if(event.target.id === "good"){
-      like.good = true;
+      like_comment.good = true;
     }
     if(event.target.id === "evil"){
-      like.good = false;
+      like_comment.good = false;
     }
-    like.likeable_type = "Comment";
-    like.likeable_id = this.dataset.id;
-
+    like_comment.likeable_type = "Comment";
+    like_comment.likeable_id = this.dataset.id;
+    console.log(like_comment);
   var _this = this;
     //making the ajax call to route specified with the comment id
     $.ajax({
       type: 'post', 
-      url: '/posts/'+like.likeable_id+'/like.json', 
-      data: {like: like}
+      url: '/posts/'+like_comment.likeable_id+'/like.json', 
+      data: {like: like_comment}
     }).done(function(data){
+      console.log(data);
         $(_this).find('.good_comment').text(data.good_count);
         $(_this).find('.evil_comment').text(data.evil_count);
       });
