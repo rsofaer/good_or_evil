@@ -1,41 +1,67 @@
 $(function(){
 
-return;
-  var chart = new CanvasJS.Chart("chartContainer",
-    {
-    title:{
-      text: "title"             
+  CanvasJS.addColorSet("goodorevil",
+                [
+                "#FFF",
+                "#000"                
+                ]);
+var makeChart = function(index, value){
+  
+  var chart = new CanvasJS.Chart("chartContainer_"+value.id,
+  {
+    title:{          
+    },
+    creditText: "",
+    backgroundColor: "none",
+    axisX:{
+    lineThickness: 0,
+    gridThickness: 0,
+    lineColor: "none"
     },
     axisY:{
-      title: "percent"
+    lineThickness: 0,
+    gridThickness: 0,
+    lineColor: "none"
     },
+    colorSet: "goodorevil",
     data:[
     {        
       type: "stackedBar100",
-      showInLegend: true, 
-      name: "Good",
+      showInLegend: false, 
+      labelFontColor: "none",
+      labelFontSize: "none",
+      tickThickness: 0,
       dataPoints: [
-      {y: 600, label: "Good" },
+      {y: value.good_count, label: "Good" },
       ]
     },
     {        
       type: "stackedBar100",
-      showInLegend: true, 
-      name: "Evil",
+      showInLegend: false, 
+      labelFontColor: "none",
+      labelFontSize: "none",
+      tickThickness: 0,
       dataPoints: [
-      {y: 400, label: "Evil" },
+      {y: value.evil_count, label: "EVIL" },
       ]
-    },   
+      }       
     ]
 
   });
   chart.render();
 
+};
+// .each is taking gon.posts and calling makeChart
+ $.each(gon.posts, makeChart);
+ console.log(gon.posts);
+
+
+
   $('.addComment').on('submit', function(event){
     event.preventDefault();
     var new_comment = {};
     new_comment.post_id  = this.dataset.id;
-    new_comment.body = $('#new_comment_'+this.dataset.id).val();
+    new_comment.body = $('.new_comment_'+this.dataset.id).val();
     var _this = this;
     $.ajax({
       type: 'post',
@@ -43,7 +69,7 @@ return;
       data: {comment: new_comment}
     }).done(function(data){
       var commentHTML = HandlebarsTemplates.comment(data);
-      $("#comment_container_"+_this.dataset.id).append(commentHTML);
+      $(".comment_container_"+_this.dataset.id).append(commentHTML);
     });
   });
 
@@ -72,6 +98,8 @@ return;
         //ajax response includes good and evil count
         $(_this).find('.good_post').text(data.good_count);
         $(_this).find('.evil_post').text(data.evil_count);
+        // console.log(data);
+        makeChart(0,data);
       });
 
   });
@@ -116,11 +144,10 @@ $(function(){
         imageLoader.addEventListener('change', handleImage, false);
     var canvas = document.getElementById('imageCanvas');
     var ctx = canvas.getContext('2d');
-      console.log('derpy')
+
     
 
     function handleImage(e) {
-      console.log('hello')
       var reader = new FileReader();
       reader.onload = function(event){
         var img = new Image();
