@@ -1,41 +1,73 @@
 $(function(){
 
-return;
+  CanvasJS.addColorSet("goodorevil",
+                [
+                "grey",
+                "#000000"                
+                ]);
+ // var createCharts = function(){
+  
   var chart = new CanvasJS.Chart("chartContainer",
-    {
+  {
     title:{
-      text: "title"             
+      // text: ""             
+    },
+    creditText: "",
+    backgroundColor: "none",
+    axisX:{
+    lineThickness: 0,
+    gridThickness: 0,
+    lineColor: "none"
     },
     axisY:{
-      title: "percent"
+    lineThickness: 0,
+    gridThickness: 0,
+    lineColor: "none"
     },
+    colorSet: "goodorevil",
     data:[
     {        
       type: "stackedBar100",
-      showInLegend: true, 
-      name: "Good",
+      showInLegend: false, 
+      // name: "Good",
+      // color: "grey",
+      labelFontColor: "none",
+      labelFontSize: "none",
+      tickThickness: 0,
       dataPoints: [
-      {y: 600, label: "Good" },
+      {y: gon.good, label: "Good" },
       ]
     },
     {        
       type: "stackedBar100",
-      showInLegend: true, 
-      name: "Evil",
+      showInLegend: false, 
+      // name: "Evil",
+      // color: "black",
+      labelFontColor: "none",
+      labelFontSize: "none",
+      tickThickness: 0,
       dataPoints: [
-      {y: 400, label: "Evil" },
+      {y: gon.evil, label: "EVIL" },
       ]
-    },   
+    }       
     ]
 
   });
   chart.render();
+  // console.log(gon.good);
+  // console.log(gon.evil);
+// };
+
+  // gon.post.each(function(event){
+  //   // call a function for chart
+
+  // });
 
   $('.addComment').on('submit', function(event){
     event.preventDefault();
     var new_comment = {};
     new_comment.post_id  = this.dataset.id;
-    new_comment.body = $('#new_comment_'+this.dataset.id).val();
+    new_comment.body = $('.new_comment_'+this.dataset.id).val();
     var _this = this;
     $.ajax({
       type: 'post',
@@ -43,7 +75,7 @@ return;
       data: {comment: new_comment}
     }).done(function(data){
       var commentHTML = HandlebarsTemplates.comment(data);
-      $("#comment_container_"+_this.dataset.id).append(commentHTML);
+      $(".comment_container_"+_this.dataset.id).append(commentHTML);
     });
   });
 
@@ -116,11 +148,10 @@ $(function(){
         imageLoader.addEventListener('change', handleImage, false);
     var canvas = document.getElementById('imageCanvas');
     var ctx = canvas.getContext('2d');
-      console.log('derpy')
+
     
 
     function handleImage(e) {
-      console.log('hello')
       var reader = new FileReader();
       reader.onload = function(event){
         var img = new Image();
