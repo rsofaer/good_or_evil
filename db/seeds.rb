@@ -26,4 +26,3 @@ User.all.each do |user|
       comment.likes.create(good:false)
     end
   end
-end
