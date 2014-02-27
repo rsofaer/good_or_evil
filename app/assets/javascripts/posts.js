@@ -2,8 +2,8 @@ $(function(){
 
   CanvasJS.addColorSet("goodorevil",
                 [
-                "grey",
-                "#000000"                
+                "#FFF",
+                "#000"                
                 ]);
 var makeChart = function(index, value){
   
@@ -32,7 +32,7 @@ var makeChart = function(index, value){
       labelFontSize: "none",
       tickThickness: 0,
       dataPoints: [
-      {y: value.good, label: "Good" },
+      {y: value.good_count, label: "Good" },
       ]
     },
     {        
@@ -42,9 +42,9 @@ var makeChart = function(index, value){
       labelFontSize: "none",
       tickThickness: 0,
       dataPoints: [
-      {y: value.evil, label: "EVIL" },
+      {y: value.evil_count, label: "EVIL" },
       ]
-    }       
+      }       
     ]
 
   });
@@ -53,6 +53,7 @@ var makeChart = function(index, value){
 };
 // .each is taking gon.posts and calling makeChart
  $.each(gon.posts, makeChart);
+ console.log(gon.posts);
 
 
 
@@ -97,6 +98,8 @@ var makeChart = function(index, value){
         //ajax response includes good and evil count
         $(_this).find('.good_post').text(data.good_count);
         $(_this).find('.evil_post').text(data.evil_count);
+        // console.log(data);
+        makeChart(0,data);
       });
 
   });

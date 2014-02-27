@@ -7,8 +7,8 @@ class PostsController < ApplicationController
 
     gon.posts = @posts.map do |post|
       {id: post.id, 
-      good: post.likes.where(good:true).count,
-      evil: post.likes.where(good:false).count}
+      good_count: post.likes.where(good:true).count,
+      evil_count: post.likes.where(good:false).count}
     end
    
     @post = Post.new
@@ -67,14 +67,14 @@ class PostsController < ApplicationController
         post = Post.find(like_params["likeable_id"])
         good_count = post.likes.where(good:true).count
         evil_count = post.likes.where(good:false).count
+        @like_count = {good_count: good_count, evil_count: evil_count, id: post.id}
       elsif like_params["likeable_type"] == "Comment"
         comment = Comment.find(like_params["likeable_id"])
         good_count = comment.likes.where(good:true).count
         evil_count = comment.likes.where(good:false).count
+        @like_count = {good_count: good_count, evil_count: evil_count}
       end
-
-
-    @like_count = {good_count: good_count, evil_count: evil_count}
+    
     respond_to do |f|
       f.json { render :json => @like_count }
     end
