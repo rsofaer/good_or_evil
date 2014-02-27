@@ -9,8 +9,7 @@ var makeChart = function(index, value){
   
   var chart = new CanvasJS.Chart("chartContainer_"+value.id,
   {
-    title:{
-      // text: ""             
+    title:{          
     },
     creditText: "",
     backgroundColor: "none",
@@ -52,12 +51,8 @@ var makeChart = function(index, value){
   chart.render();
 
 };
-
-
+// .each is taking gon.posts and calling makeChart
  $.each(gon.posts, makeChart);
-
-
-
 
 
 
