@@ -4,6 +4,17 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order(:created_at).page params[:page]
+    @a_post = Post.find(12)
+    # gon.post = @a_post.attributes
+    # @posts.each do |x|
+    #   gon.good = x.likes.where(good:true).count
+    #   gon.evil = x.likes.where(good:false).count
+    # end
+    gon.good = @a_post.likes.where(good:true).count
+    gon.evil = @a_post.likes.where(good:false).count
+    
+    # gon.post = @post.attrbutes
+
     @post = Post.new
     # respond_to do |f|
     #   # f.html

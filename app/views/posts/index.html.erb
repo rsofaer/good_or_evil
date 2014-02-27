@@ -12,6 +12,10 @@
               <div class="post-text">
                 <%= post.text_overlay %></div><br>
             </div>
+
+            <div id="chartContainer">
+            </div>
+
             Good ratings:
             <div class="good_post"><%= post.likes.where(good: true).count %></div>
             <div id="halo"></div>
@@ -27,7 +31,7 @@
             <button id="evil">evil</button>
           </div>
           
-          <div id="chartContainer"></div>
+
 
           <div id="comment_container" data-id="<%=post.id%>">
             <form id="addComment" data-id="<%=post.id%>">
