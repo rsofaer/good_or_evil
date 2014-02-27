@@ -21,7 +21,7 @@
           <br>
           <button id="good">good</button>
           <button id="evil">evil</button>
-
+          </div>
           <div class="comment_container_<%=post.id%>">
             <form class="addComment" data-id="<%=post.id%>">
             <input class="new_comment_<%=post.id%>" type="text">
@@ -33,18 +33,18 @@
               <div class="comment" data-id="<%=comment.id%>">
                 <div><%= comment.body %></div><br>
                
-                <div class="good_comment"><%= comment.likes.where(good: true).count %>
+                <div class="good_comment"><%= comment.likes.where(good: true).count %></div>
                   <button id="good">good</button>
-                </div>
+                
                 <!-- Evil ratings: -->
-                <div class="evil_comment"><%= comment.likes.where(good: false).count %>
+                <div class="evil_comment"><%= comment.likes.where(good: false).count %></div>
                 <button id="evil">evil</button>
-                </div>
+                
               </div>
             <% end %>
             </div>
         <% end %>
-        </div>
+        
       </div>
     </div>
   </div>
