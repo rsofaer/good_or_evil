@@ -4,6 +4,20 @@ class ImageWorker
 
   def perform(post_id)
     post = Post.find(post_id)
+    img = Magick::ImageList.new("#{Rails.root}/public#{post.photo.url}")
+    txt = Magick::Draw.new
+
+    txt.annotate(img, 0, 0, 0, 60, "#{post.text_overlay}") {
+      self.gravity = Magick::CenterGravity
+      self.pointsize = 20
+      self.stroke = 'black'
+      self.fill = '#ffffff'
+      self.font_weight = Magick::BoldWeight
+    }
+    img.write("#{Rails.root}/public#{post.photo.url}")
+
+
+    img.format = 'jpeg'
     AWS.config({
                  :access_key_id     => ENV['S3_KEY'],
                  :secret_access_key => ENV['S3_SECRET']
