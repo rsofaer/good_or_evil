@@ -5,26 +5,20 @@ class BlankWorker
   def perform(post_id)
     post = Post.find(post_id)
 
-    img = Magick::Image.new(360,480) {
-      self.background_color = "gray"
-    }
     rmagick_bg_name = SecureRandom.hex
 
     dir = File.dirname("#{Rails.root}/public/uploads/post/photo/#{post.id}/#{rmagick_bg_name}.jpg")
     FileUtils.mkdir_p(dir) unless File.directory?(dir)
-    img.write("#{Rails.root}/public/uploads/post/photo/#{post.id}/#{rmagick_bg_name}.jpg")
 
-    txt = Magick::Draw.new
-
-    txt.annotate(img, 0, 0, 0, 60, "#{post.text_overlay}") {
+    str = "caption:#{post.text_overlay}"
+    img = Magick::Image.read(str) {
+      self.size = "360x480"
       self.gravity = Magick::CenterGravity
-      self.pointsize = 20
+      self.background_color = "black"
       self.stroke = '#000000'
       self.fill = '#ffffff'
-      self.font_weight = Magick::BoldWeight
     }
-    img.write("#{Rails.root}/public/uploads/post/photo/#{post.id}/#{rmagick_bg_name}.jpg")
-    img.format = 'jpeg'
+    img[0].write("#{Rails.root}/public/uploads/post/photo/#{post.id}/#{rmagick_bg_name}.jpg")
 
     s3 = AWS::S3.new
     bucket_name = "goodevil"

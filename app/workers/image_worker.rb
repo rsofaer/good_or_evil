@@ -4,20 +4,26 @@ class ImageWorker
 
   def perform(post_id)
     post = Post.find(post_id)
-    img = Magick::ImageList.new("#{Rails.root}/public#{post.photo.url}")
-    txt = Magick::Draw.new
 
-    txt.annotate(img, 0, 0, 0, 60, "#{post.text_overlay}") {
+    image_caption = "caption:#{post.text_overlay}"
+    image_for_caption = Magick::Image.read(image_caption) {
+      self.size = "360x480"
       self.gravity = Magick::CenterGravity
-      self.pointsize = 20
-      self.stroke = 'black'
+      self.stroke = '#000000'
       self.fill = '#ffffff'
-      self.font_weight = Magick::BoldWeight
+      self.pointsize = 24
+      self.font = "Arial"
+
+      self.background_color= "Transparent"
     }
-    img.write("#{Rails.root}/public#{post.photo.url}")
 
+    image_for_caption[0].write("#{Rails.root}/public/uploads/post/photo/#{post.id}/caption.png")
 
-    img.format = 'jpeg'
+    source = Magick::Image.read("#{Rails.root}/public#{post.photo.url}").first
+    overlay = Magick::Image.read("#{Rails.root}/public/uploads/post/photo/#{post.id}/caption.png").first
+    source.composite!(overlay, 50, 0, Magick::OverCompositeOp)
+    source.write("#{Rails.root}/public#{post.photo.url}")
+
     AWS.config({
                  :access_key_id     => ENV['S3_KEY'],
                  :secret_access_key => ENV['S3_SECRET']

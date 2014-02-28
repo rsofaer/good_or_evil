@@ -20,3 +20,6 @@
 
 # Ignore the env file.
 .env
+
+# Ignore the public assets file.
+/public/assets

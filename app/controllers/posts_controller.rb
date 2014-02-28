@@ -21,49 +21,18 @@ class PostsController < ApplicationController
   def create
     post_params = params.require(:post).permit(:text_overlay, :photo, :photo_link)
     post = Post.create(post_params)
+
     if post.text_overlay.nil?
       post.update_attributes(text_overlay: "")
     end
 
-    #don't know why blankimage worker can't get the updated url, but works here....
-
     if post.photo.file.nil?
-      img = Magick::Image.new(360,480) {
-        self.background_color = "gray"
-      }
-      rmagick_bg_name = SecureRandom.hex
-
-      dir = File.dirname("#{Rails.root}/public/uploads/post/photo/#{post.id}/#{rmagick_bg_name}.jpg")
-      FileUtils.mkdir_p(dir) unless File.directory?(dir)
-      img.write("#{Rails.root}/public/uploads/post/photo/#{post.id}/#{rmagick_bg_name}.jpg")
-
-      txt = Magick::Draw.new
-
-      txt.annotate(img, 0, 0, 0, 60, "#{post.text_overlay}") {
-        self.gravity = Magick::CenterGravity
-        self.pointsize = 20
-        self.stroke = '#000000'
-        self.fill = '#ffffff'
-        self.font_weight = Magick::BoldWeight
-      }
-      img.write("#{Rails.root}/public/uploads/post/photo/#{post.id}/#{rmagick_bg_name}.jpg")
-      img.format = 'jpeg'
-
-      s3 = AWS::S3.new
-      bucket_name = "goodevil"
-      file_name = "#{Rails.root}/public/uploads/post/photo/#{post.id}/#{rmagick_bg_name}.jpg"
-      key = File.basename("#{Rails.root}/public/uploads/post/photo/#{post.id}/#{rmagick_bg_name}.jpg")
-      bucket = s3.buckets[bucket_name]
-      s3.buckets["goodevil"].objects[key].write(:file => file_name)
-      post.update_attributes(photo_link: "https://s3.amazonaws.com/goodevil/"+"#{rmagick_bg_name}.jpg")
-      File.delay_for(2.minutes).delete("#{Rails.root}/public/uploads/post/photo/#{post.id}/#{rmagick_bg_name}.jpg")
+      BlankWorker.perform_async(post.id)
       redirect_to root_path
     else
-
       ImageWorker.perform_async(post.id)
       current_user.posts << post # adding posts to current_user
       redirect_to root_path
-      binding.pry
     end
   end
 
