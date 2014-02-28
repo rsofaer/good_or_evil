@@ -139,8 +139,6 @@ var makeChart = function(index, value){
 
   });
 
-
-
 });
 
 //  IMAGE LOAD AND CANVAS DISPLAY // 
