@@ -20,7 +20,6 @@ class PostsController < ApplicationController
 
   def create
     post_params = params.require(:post).permit(:text_overlay, :photo, :photo_link)
-    binding.pry
     post = Post.create(post_params)
     if post.text_overlay.nil?
       post.update_attributes(text_overlay: "")
@@ -63,8 +62,7 @@ class PostsController < ApplicationController
 
       ImageWorker.perform_async(post.id)
       current_user.posts << post # adding posts to current_user
-      redirect_to root_path
-      binding.pry
+      redirect_to post_path
     end
   end
 

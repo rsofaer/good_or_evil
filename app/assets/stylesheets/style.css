@@ -20,9 +20,19 @@
 	div { 
 		position:relative; 	
 	}
+	
+	/* POSTS CONTAINER */
 
 	div.post_container {
-		background: url(/images/13.jpg);
+		/*background: url(/images/13.jpg);*/
+		background-color: rgba(189, 195, 199,1.0);
+		width: 100%;
+	}
+	
+	.item { 
+		margin-top: 5em;
+
+
 	}
 
 	div.profile_container {
@@ -191,16 +201,17 @@ div.signup_partial {
 	height: 60px;
 	margin-top: 25px;
 	margin-left: 150px;
-	padding-top: 6px;
+	padding-top: 15px;
 	color: #ffffff;
 	font-size: 1.75;
 	background: rgba(192, 57, 43, .8);
 }
 
-.signup_partial p {
+.signup_partial li {
 	font-size: 1.5em;
 	text-align: center;
 	color: #ffffff;
+	list-style-type: none;
 }
 
 .signup_partial:hover {
