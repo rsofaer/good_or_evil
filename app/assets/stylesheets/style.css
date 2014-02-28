@@ -21,11 +21,11 @@
 	}
 
 	div.post_container {
-		background: url(/assets/13.jpg);
+		background: url(/images/13.jpg);
 	}
 
 	div.profile_container {
-		background: url(/assets/13.jpg) center no-repeat;
+		background: url(/images/13.jpg) center no-repeat;
 		background-size: cover;
 		background-size: 100%;
 		width: 100%;
@@ -159,7 +159,7 @@
 	background-size: 100%;
 	margin-top: 0;
 	background-color: black;
-	background: url("/assets/newyork.jpg") center center no-repeat;
+	background: url("/images/newyork.jpg") center center no-repeat;
 	background: cover;
 	padding: 0;
 }
@@ -212,8 +212,7 @@ div.signup_partial {
 	padding-top: 6px;
 	color: #ffffff;
 	font-size: 1.75;
-	background: rgba(192, 57, 43, 1);
-	border: 2px solid rgba(192, 57, 43, 1);
+	background: rgba(192, 57, 43, .8);
 }
 
 .signup_partial p {
