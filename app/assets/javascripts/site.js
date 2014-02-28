@@ -8,11 +8,11 @@ window.onload = function () {
 
 // if logic needed here
 
-if ($('#chartContainer_all_votes_all_posts').length === 0) {
+if ($('#all_votes_all_posts_chart').length === 0) {
   return;
 }
 
-  var chart1 = new CanvasJS.Chart("chartContainer_all_votes_all_posts",
+  var chart1 = new CanvasJS.Chart("all_votes_all_posts_chart",
     {
       animationEnabled: true, // change to false
       title:{
@@ -22,6 +22,8 @@ if ($('#chartContainer_all_votes_all_posts').length === 0) {
       backgroundColor: "none",
       colorSet: "goodorevil",
       creditText: "",
+      width: 500,
+      height: 500,
       data: [
       {
         type: "doughnut",
@@ -35,7 +37,7 @@ if ($('#chartContainer_all_votes_all_posts').length === 0) {
 
     chart1.render();
 
-  var chart2 = new CanvasJS.Chart("chartContainer_your_votes_all_posts",
+  var chart2 = new CanvasJS.Chart("your_votes_all_posts_chart",
     {
       animationEnabled: true, // change to false
       title:{
@@ -45,6 +47,8 @@ if ($('#chartContainer_all_votes_all_posts').length === 0) {
       backgroundColor: "none",
       colorSet: "goodorevil",
       creditText: "",
+      width: 500,
+      height: 500,
       data: [
       {
         type: "doughnut",
@@ -58,7 +62,7 @@ if ($('#chartContainer_all_votes_all_posts').length === 0) {
 
     chart2.render();
 
-    var chart3 = new CanvasJS.Chart("chartContainer_all_votes_your_posts",
+    var chart3 = new CanvasJS.Chart("all_votes_your_posts_chart",
     {
       animationEnabled: true, // change to false
       title:{
@@ -68,6 +72,8 @@ if ($('#chartContainer_all_votes_all_posts').length === 0) {
       backgroundColor: "none",
       colorSet: "goodorevil",
       creditText: "",
+      width: 500,
+      height: 500,
       data: [
       {
         type: "doughnut",
