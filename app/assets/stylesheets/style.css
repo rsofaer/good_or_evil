@@ -72,7 +72,8 @@ img#bg {
 	left: 0;
 	padding: 10px 5px 5px 5px;
 	font-size: 1.25em;
-	background-color: rgba(192, 57, 43, .8);
+	background-color: #999;
+	opacity: .8;
 	list-style-type: none;
 	text-align: center;
 	position: fixed;
@@ -90,7 +91,8 @@ img#bg {
 	left: 0;
 	padding: 10px 5px 5px 5px;
 	font-size: 1.25em;
-	background-color: rgba(192, 57, 43, .8);
+	background-color: #999;
+	opacity: .8;
 	list-style-type: none;
 	text-align: center;
 	position: fixed;
@@ -99,6 +101,25 @@ img#bg {
 .profile_post_link:hover {
 	left: .15em;
 }
+
+.signout_link {
+	width: 100px;
+	height: 40px;
+	top: 14em;
+	left: 0;
+	padding: 10px 5px 5px 5px;
+	font-size: 1.25em;
+	background-color: #999;
+	opacity: .8;
+	list-style-type: none;
+	text-align: center;
+	position: fixed;	
+}
+
+.signout_link:hover {
+	left: .15em;
+}
+
 
 	div.profile_container {
 		background: url(/images/13.jpg) center no-repeat;
@@ -186,6 +207,7 @@ img#bg {
 	width: 100px;
 	height: 35px;
 	padding: 5px;
+	left: -2em;
 /*	margin-right: -10em;*/
 	font-size: 1.5em;
 	background-color: #333;
@@ -206,7 +228,6 @@ img#bg {
 	margin-left: 2em;
 
 }
-
 
 .header h4 {
 	font-size: 2.25;
@@ -271,7 +292,7 @@ div.signup_partial {
 	#evil_btn {
 		float: right;
 		z-index: 10;
-		border: 1px solid black;
+		border: 1px solid white;
 	}
 
 	#good_btn:hover{
@@ -281,6 +302,7 @@ div.signup_partial {
 
 	#evil_btn:hover{
 		background-color: #000;
+		border: 1px solid black;
 		color: #FFF;
 	}
 
@@ -392,6 +414,12 @@ form {
 
 }
 
+
+
+/* PROFILE PAGE */
+
+
+
   #all_votes_all_posts_chart {
   	top: 250px;
   
@@ -410,6 +438,62 @@ form {
 	}
 
 	#user_chart {
+		left: 8%;
 		height: 400px;
 	}
 
+
+.post_page_link {
+	width: 100px;
+	height: 40px;
+	top: 10em;
+	left: 0;
+	padding: 10px 5px 5px 5px;
+	font-size: 1.25em;
+	background-color: #999;
+	opacity: .8;
+	list-style-type: none;
+	text-align: center;
+	position: fixed;
+}
+
+.post_page_link:hover {
+	left: .15em;
+}
+
+
+.page_link {
+	width: 100px;
+	height: 40px;
+	top: 12em;
+	left: 0;
+	padding: 10px 5px 5px 5px;
+	font-size: 1.25em;
+	background-color: #999;
+	opacity: .8;
+	list-style-type: none;
+	text-align: center;
+	position: fixed;
+}
+
+.page_link:hover {
+	left: .15em;
+}
+
+.signout_link {
+	width: 100px;
+	height: 40px;
+	top: 14em;
+	left: 0;
+	padding: 10px 5px 5px 5px;
+	font-size: 1.25em;
+	background-color: #999;
+	opacity: .8;
+	list-style-type: none;
+	text-align: center;
+	position: fixed;	
+}
+
+.signout_link:hover {
+	left: .15em;
+}
