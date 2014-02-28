@@ -75,7 +75,7 @@ gem 'mini_magick'
 
 gem 'handlebars_assets'
 
-gem 'foundation-rails'
+gem 'foundation-rails', '5.0.3'
 group :development do
   gem 'rails_layout'
 end
