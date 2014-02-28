@@ -20,9 +20,19 @@
 	div { 
 		position:relative; 	
 	}
+	
+	/* POSTS CONTAINER */
 
 	div.post_container {
-		background: url(/images/13.jpg);
+		/*background: url(/images/13.jpg);*/
+		background-color: rgba(189, 195, 199,1.0);
+		width: 100%;
+	}
+	
+	.item { 
+		margin-top: 5em;
+
+
 	}
 
 	div.profile_container {

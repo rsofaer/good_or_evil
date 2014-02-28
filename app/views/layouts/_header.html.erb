@@ -2,21 +2,12 @@
 
 <div class="fixed">
       <nav class="top-bar data-topbar">
-        <ul class="title-area">
-          <li class="title">
-            <!-- <h1><a href="/posts/" data-reveal-id="myModal" data-reveal-ajax="true"><span id="good">good</span>
-                &
-                <span id='evil'>evil</span></a></h1> -->
-                <h1><a href="/"><span id="good">good</span>
-                &
-                <span id='evil'>evil</span></a></h1>
-          </li>
-        </ul>
+        
           <section class='top-bar-section'>
             <!-- right side of nav -->
             <ul class='right'>
               <li class="sign-up" data-reveal-id="signupModal" data-reveal>
-                <%= link_to "Sign Up", new_user_registration_path %>
+                <%= link_to "Sign Up", posts_path %>
               </li>
               <li class="sign-in" data-reveal-id"loginModal" data-reveal>
                 <%= link_to "Sign In", user_session_path %>
