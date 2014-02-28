@@ -38,8 +38,19 @@
 		z-index: 0;
 
 	}
+		
+	#chartContainer_all_votes_all_posts {
+		top: 50px;
+		z-index: 2;
+	}
+	
+	#chartContainer_your_votes_all_posts {
+		top: 500px;
+		z-index: 2;
+	}
 
-	#chartContainer_profile {
+	#chartContainer_all_votes_your_posts {
+		top: 950px;
 		z-index: 2;
 	}
 	
