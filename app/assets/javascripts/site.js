@@ -6,6 +6,11 @@ window.onload = function () {
                 "#000"                
                 ]);
 
+// if logic needed here
+
+if ($('#chartContainer_profile').length === 0) {
+  return;
+}
 
 var chart = new CanvasJS.Chart("chartContainer_profile",
     {
