@@ -37,7 +37,7 @@ class PostsController < ApplicationController
     img.format = 'jpeg'
     ImageWorker.perform_async(post.id)
     current_user.posts << post # adding posts to current_user
-    redirect_to root_path
+    redirect_to posts_path
     
   end
   
