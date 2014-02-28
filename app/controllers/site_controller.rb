@@ -13,11 +13,19 @@ class SiteController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    gon.post_count = @user.posts.count
-    gon.good_like_count = @user.likes.where(good:true).count
-    gon.evil_like_count = @user.likes.where(good:false).count
-    gon.comment_count = @user.comments.count
-    gon.good_like_total = Like.where(good:true).count
+    
+    all_votes_all_posts_total = Like.where(likeable_type: Post).count
+    gon.all_votes_all_posts_good = Like.where(likeable_type: Post, good: true).count
+    gon.all_votes_all_posts_evil = Like.where(likeable_type: Post, good: false).count
+   
+    your_votes_all_posts_total = Like.where(likeable_type: Post, user_id: @user.id).count
+    gon.your_votes_all_posts_good = Like.where(likeable_type: Post, user_id: @user.id, good: true).count
+    gon.your_votes_all_posts_evil = Like.where(likeable_type: Post, user_id: @user.id, good: false).count
+    
+    all_votes_your_posts_total = @user.likes.where(likeable_type: Post).count
+    gon.all_votes_your_posts_good = @user.likes.where(likeable_type: Post, good: true).count
+    gon.all_votes_your_posts_evil = @user.likes.where(likeable_type: Post, good: false).count
+
   end
   
 end

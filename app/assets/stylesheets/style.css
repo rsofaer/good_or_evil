@@ -28,11 +28,6 @@
 		background: url(/assets/13.jpg) center no-repeat;
 		background-size: cover;
 		background-size: 100%;
-		-webkit-webkit: background-size: cover;
-		-moz-webkit: background-size: cover;
-		-ms-webkit: background-size: cover;
-		-o-webkit: background-size: cover;
-		webkit: background-size: cover;
 		width: 100%;
 		height: 100%;
 
@@ -42,8 +37,19 @@
 		z-index: 0;
 
 	}
+		
+	#chartContainer_all_votes_all_posts {
+		top: 50px;
+		z-index: 2;
+	}
+	
+	#chartContainer_your_votes_all_posts {
+		top: 500px;
+		z-index: 2;
+	}
 
-	#chartContainer_profile {
+	#chartContainer_all_votes_your_posts {
+		top: 950px;
 		z-index: 2;
 	}
 	
@@ -151,12 +157,6 @@
 	width: 100%;
 	height: 100%;
 	background-size: 100%;
-	background-size: cover;
-	-webkit-width: background-size: cover;
-	-moz-width: background-size: cover;
-	-ms-width: background-size: cover;
-	-o-width: background-size: cover;
-	width: background-size: cover;
 	margin-top: 0;
 	background-color: black;
 	background: url("/assets/newyork.jpg") center center no-repeat;

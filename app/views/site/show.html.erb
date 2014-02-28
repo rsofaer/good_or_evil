@@ -1,36 +1,19 @@
 <div class="profile_container">
 
-<h2>User Profile</h2>
+<br><br><br><br>
 
-<div id="chartContainer_profile"></div>
+<div class="text-center"><h4>User Profile for <%= @user.email %></h4></div>
 
-<div><h4><%= @user.email %></h4></div>
+<div class="text-center"><h4>Average Good or Evil Voting<h4></div>
 
-<div><h4>User Stats<h4></div>
-
-<div>
-Posts you've made: <%= @user.posts.count %>
-<br>
-
-Good ratings you've made: <%= @user.likes.where(good:true).count %>
-<br>
-
-Evil ratings you've made: <%= @user.likes.where(good:false).count %>
-<br>
-
-Comments you've made: <%= @user.comments.count %>
-<br>
-
-</div><br>
-
-<div><h4>User Settings<h4></div>
-
-Update email address
-<br>
-
-Update password
-<br>
-
-</div>
-
-
+<!-- <div class="row"> -->
+  <!-- <div class="small-10 small-centered medium-8 large-4 columns"> -->
+    <div id="chartContainer_all_votes_all_posts"></div><br>
+  <!-- </div> -->
+  <!-- <div class="small-10 small-centered medium-8 large-4 columns"> -->
+    <div id="chartContainer_your_votes_all_posts"></div><br>
+  <!-- </div> -->
+  <!-- <div class="small-10 small-centered medium-8 large-4 columns"> -->
+    <div id="chartContainer_all_votes_your_posts"></div><br>
+  <!-- </div> -->
+<!-- </div> -->
