@@ -1,7 +1,7 @@
 class SiteController < ApplicationController
       
   def index
-    
+    gon.clear
     # if current_user
     #   if current_user.nil?
     #     redirect_to root_path

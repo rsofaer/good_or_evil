@@ -137,10 +137,87 @@
 	margin-top: 0;
 	background-color: black;
 	background: url("/assets/newyork.jpg") center center no-repeat;
+	background: cover;
+	padding: 0;
+}
+
+.signin_partial {
+	margin-top: 1em;
+	width: 100px;
+	height: 35px;
+	padding: 5px;
+/*	margin-right: -10em;*/
+	font-size: 1.5em;
+	background-color: #333;
+	opacity: .8;
+	list-style-type: none;
+	text-align: center;
+}
+
+.signin_partial:hover {
+	background-color: #333;
+	opacity: .6;
+}
+
+.header {
+	width: 80%;
+	height: 200px;
+	margin-top: 5em;
+	margin-left: 2em;
+
+}
+
+.header h4 {
+	font-size: 2.25;
+	color: #ffffff;
+}
+
+.landing_title, h1 {
+	font-size: 3em;
+	color: #ffffff;
+}
+
+.landing_title span {
+	color: rgba(192, 57, 43,1.0);
+}
+
+div.signup_partial {
+	width: 200px;
+	height: 60px;
+	margin-top: 25px;
+	margin-left: 150px;
+	padding-top: 6px;
+	color: #ffffff;
+	font-size: 1.75;
+	background: rgba(192, 57, 43, 1);
+	border: 2px solid rgba(192, 57, 43, 1);
+}
+
+.signup_partial p {
+	font-size: 1.5em;
+	text-align: center;
+	color: #ffffff;
+}
+
+.signup_partial:hover {
+	color: #333;
+	background: rgba(192, 57, 43, .7);
 }
 
 
+.info {
+	width: 100%;
+	height: 250px;
+	margin-top: 12em;
+	padding: 10px;
+	background-color: rgba(192, 57, 43, .6);
+	text-align: center;
+	color: #ffffff;
+}
 
+.info p {
+	font-size: 1.75;
+}
 
 
 
