@@ -63,7 +63,7 @@ class PostsController < ApplicationController
       ImageWorker.perform_async(post.id)
       current_user.posts << post # adding posts to current_user
       redirect_to root_path
-      binding.pry
+
     end
   end
 

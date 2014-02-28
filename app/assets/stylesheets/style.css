@@ -144,6 +144,7 @@
 	background: url("/images/newyork.jpg") center center no-repeat;
 	background: cover;
 	padding: 0;
+
 }
 
 .signin_partial {
@@ -180,6 +181,7 @@
 .landing_title, h1 {
 	font-size: 3em;
 	color: #ffffff;
+	font-family: Arial;
 }
 
 .landing_title span {
@@ -191,16 +193,17 @@ div.signup_partial {
 	height: 60px;
 	margin-top: 25px;
 	margin-left: 150px;
-	padding-top: 6px;
+	padding-top: 15px;
 	color: #ffffff;
 	font-size: 1.75;
 	background: rgba(192, 57, 43, .8);
 }
 
-.signup_partial p {
+.signup_partial li {
 	font-size: 1.5em;
 	text-align: center;
 	color: #ffffff;
+	list-style-type: none;
 }
 
 .signup_partial:hover {
