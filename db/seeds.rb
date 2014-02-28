@@ -8,13 +8,31 @@ u3 = User.find(3)
 u4 = User.find(4)
 u5 = User.find(5)
 
-for i in 1..5
-  u1.posts.create(text_overlay:"Post#{i}", photo_link:"http://ilikeswhatilikes.files.wordpress.com/2013/09/adventure-time-2.jpg")
-  u2.posts.create(text_overlay:"Post#{i}", photo_link:"http://static6.businessinsider.com/image/52161af5ecad04d102000058/ad-of-the-day-hooters-waitress-gets-quizzed-on-her-football-knowledge.jpg")
-  u3.posts.create(text_overlay:"Post#{i}", photo_link:"http://rack.2.mshcdn.com/media/ZgkyMDE0LzAyLzE2LzdhL1Bob3Rvb2Z0aGVELmY1NWZiLmpwZwpwCXRodW1iCTk1MHg1MzQjCmUJanBn/e7c4d67d/aa2/Photo-of-the-Day.jpg")
-  u4.posts.create(text_overlay:"Post#{i}", photo_link:"https://lh6.googleusercontent.com/-T8JYHT_zcEE/AAAAAAAAAAI/AAAAAAAACHc/8NZRazvAlKg/photo.jpg")
-  u5.posts.create(text_overlay:"Post#{i}", photo_link:"http://graphics8.nytimes.com/images/2012/08/09/world/asia/9Aug-POD-IndiaInk/9Aug-POD-IndiaInk-blog480.jpg")
-end
+file = (File.open(File.join(Rails.root, '/public/images/chimp.jpg')))
+post = Post.create!(text_overlay: "test", photo: file, photo_link: "https://s3.amazonaws.com/goodevil/", user_id: u1.id)
+
+s3 = AWS::S3.new
+bucket_name = "goodevil"
+path = file.path
+key = post.photo.file.original_filename
+s3.buckets["goodevil"].objects[key].write(:file => path)
+post.update_attributes(photo_link: "https://s3.amazonaws.com/goodevil/" + post.photo.file.original_filename)
+
+
+file = (File.open(File.join(Rails.root, '/public/images/chimp.jpg')))
+post = Post.create!(text_overlay: "test", photo: file, photo_link: "https://s3.amazonaws.com/goodevil/", user_id: u1.id)
+
+s3 = AWS::S3.new
+bucket_name = "goodevil"
+path = file.path
+key = post.photo.file.original_filename
+s3.buckets["goodevil"].objects[key].write(:file => path)
+post.update_attributes(photo_link: "https://s3.amazonaws.com/goodevil/" + post.photo.file.original_filename)
+
+
+
+
+
 
 User.all.each do |user|
   user.posts.each do |post|
