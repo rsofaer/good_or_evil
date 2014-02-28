@@ -1,9 +1,11 @@
 <div class="post_container">
-
- <%= render 'layouts/header' %>
-
- <div class="row ">
-  <h1></h1>
+  <div class="post_page_link">
+    <%= render 'layouts/header' %>
+  </div>
+  <div class="profile_post_link">
+    <%= "Profile" %>
+  </div>
+  <div class="row ">
   <div class="item">
     <%= paginate @posts %>
     <div id="container" class="large-12 columns transitions-enabled large-centered clearfix">

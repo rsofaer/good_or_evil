@@ -1,29 +1,9 @@
 <div class="header_container">
 
-<div class="fixed">
-      <nav class="top-bar data-topbar">
-        
-          <section class='top-bar-section'>
-            <!-- right side of nav -->
-            <ul class='right'>
-              <li class="sign-up" data-reveal-id="signupModal" data-reveal>
-                <%= link_to "Sign Up", posts_path %>
-              </li>
-              <li class="sign-in" data-reveal-id"loginModal" data-reveal>
-                <%= link_to "Sign In", user_session_path %>
-              </li> 
-              <li class="profile">
-                <%= link_to "Profile", posts_path %>
-              </li>
-              <li class="new-post" data-reveal-id="myModal" data-reveal>
-                <%= link_to "New Post", posts_path %>
-              </li>
-            </ul>
-          </section>
-        </nav>
-      </div>
-        <%= render 'posts/new' %>
-        <%= render 'devise/shared/login' %>
-        <%= render 'devise/shared/signup' %>
+  <li class="new-post" data-reveal-id="myModal" data-reveal>
+    <%= link_to "Post", posts_path %>
+  </li>
+    <%= render 'posts/new' %> 
+
 </div>
         
