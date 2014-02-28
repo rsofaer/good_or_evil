@@ -20,4 +20,8 @@
 
 # Ignore the env file.
 .env
+
+/public/assets
+
 dump.rdb
+
