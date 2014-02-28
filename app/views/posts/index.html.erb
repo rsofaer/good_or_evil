@@ -21,10 +21,10 @@
           </div>
           
           <div class="good_evil">
-            <button id="good_btn">good</button>
+            <button id="good_btn" class="button">good</button>
             <div class="good_post"><%= post.likes.where(good:true).count %></div>
             <div class="evil_post"><%= post.likes.where(good:false).count %></div>
-            <button id="evil_btn">evil</button>
+            <button id="evil_btn" class="button">evil</button>
           </div>
         </div>
         <div class="comment_container_<%=post.id%>">
@@ -36,11 +36,11 @@
           <% post.comments.each do |comment| %>
           <div class="comment" data-id="<%=comment.id%>">
             <div><%= comment.body %></div><br>
-            <div>
-              <button id="good_btn">good</button>
+            <div class="good_evil_comment">
+              <button id="good_btn" class="button small">good</button>
               <div class="good_comment"><%= comment.likes.where(good: true).count %></div>
               <div class="evil_comment"><%= comment.likes.where(good: false).count %></div>
-              <button id="evil_btn">evil</button>
+              <button id="evil_btn" class="button small">evil</button>
             </div>
           </div>
 

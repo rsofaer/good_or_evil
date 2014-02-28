@@ -65,6 +65,7 @@ var makeChart = function(index, value){
     var new_comment = {};
     new_comment.post_id  = this.dataset.id;
     new_comment.body = $('.new_comment_'+this.dataset.id).val();
+
     var _this = this;
     $.ajax({
       type: 'post',
@@ -73,6 +74,7 @@ var makeChart = function(index, value){
     }).done(function(data){
       var commentHTML = HandlebarsTemplates.comment(data);
       $(".comment_container_"+_this.dataset.id).append(commentHTML);
+      $('.new_comment_'+_this.dataset.id).val("");
     });
   });
 
