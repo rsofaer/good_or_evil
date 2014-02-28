@@ -56,10 +56,11 @@ var makeChart = function(index, value){
 
 };
 // .each is taking gon.posts and calling makeChart
- $.each(gon.posts, makeChart);
+  if(gon.posts !== undefined){
+    $.each(gon.posts, makeChart);
  console.log(gon.posts);
 
-
+}
 
   $('.addComment').on('submit', function(event){
     event.preventDefault();
@@ -144,17 +145,17 @@ var makeChart = function(index, value){
 
 //  IMAGE LOAD AND CANVAS DISPLAY // 
 
+
+
 $(function(){
-
-
-
-
+  if ($('#imageLoader').length === 0){
+    return;
+  }
+  
     var imageLoader = document.getElementById('imageLoader');
         imageLoader.addEventListener('change', handleImage, false);
     var canvas = document.getElementById('imageCanvas');
     var ctx = canvas.getContext('2d');
-
-    
 
     function handleImage(e) {
       var reader = new FileReader();
@@ -199,8 +200,6 @@ $(function(){
   });
 
 });
-
-
 
 
 
