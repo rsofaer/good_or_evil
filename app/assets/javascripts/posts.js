@@ -9,21 +9,19 @@ var makeChart = function(index, value){
   
   var chart = new CanvasJS.Chart("chartContainer_"+value.id,
   {
-    title:{          
-    },
     creditText: "",
     backgroundColor: "none",
     axisX:{
     lineThickness: 0,
     gridThickness: 0,
-    valueFormatString: "",
+    valueFormatString: " ",
     tickLength: 0,
     lineColor: "none"
     },
     axisY:{
     lineThickness: 0,
     gridThickness: 0,
-    valueFormatString: "",
+    valueFormatString: " ",
     tickLength: 0,
     lineColor: "none"
     },
@@ -34,9 +32,9 @@ var makeChart = function(index, value){
       showInLegend: false, 
       labelFontColor: "none",
       labelFontSize: "none",
-      tickThickness: 0,
+      // tickThickness: 0,
       dataPoints: [
-      {y: value.good_count, label: "Good" },
+      {y: value.good_count },
       ]
     },
     {        
@@ -44,7 +42,7 @@ var makeChart = function(index, value){
       showInLegend: false, 
       labelFontColor: "none",
       labelFontSize: "none",
-      tickThickness: 0,
+      // tickThickness: 0,
       dataPoints: [
       {y: value.evil_count},
       ]
@@ -85,10 +83,10 @@ var makeChart = function(index, value){
     console.log('clicked post');
   var like = {};
     //sets the good boolean to true or false based on button clicked
-    if(event.target.id === "good"){
+    if(event.target.id === "good_btn"){
       like.good = true;
     }
-    if(event.target.id === "evil"){
+    if(event.target.id === "evil_btn"){
       like.good = false;
     }
     like.likeable_type = "Post";
@@ -116,10 +114,10 @@ var makeChart = function(index, value){
     event.preventDefault();
     console.log('clicked comment');
   var like_comment = {};
-    if(event.target.id === "good"){
+    if(event.target.id === "good_btn"){
       like_comment.good = true;
     }
-    if(event.target.id === "evil"){
+    if(event.target.id === "evil_btn"){
       like_comment.good = false;
     }
     like_comment.likeable_type = "Comment";

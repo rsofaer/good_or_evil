@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.order(:created_at).page params[:page]
+    @posts = Post.order(:created_at).reverse_order.page params[:page]
 
     gon.posts = @posts.map do |post|
       {id: post.id,

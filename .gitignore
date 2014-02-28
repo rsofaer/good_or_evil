@@ -20,3 +20,4 @@
 
 # Ignore the env file.
 .env
+dump.rdb
