@@ -3,7 +3,7 @@ GoodOrEvil::Application.routes.draw do
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
   root :to => "site#index"
   resources :posts
-  get '/profile/:id', to: 'site#show', as: 'profile'
+  get '/profile/', to: 'site#show', as: 'profile'
   post '/posts', to: "posts#create"
   post '/posts/:id/like', to: 'posts#like'
   post '/posts/:id/comments', to: 'posts#create_comment'
