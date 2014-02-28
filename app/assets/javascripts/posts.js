@@ -11,6 +11,8 @@ var makeChart = function(index, value){
   {
     creditText: "",
     backgroundColor: "none",
+    width: 270,
+    height: 1000,
     axisX:{
     lineThickness: 0,
     gridThickness: 0,
