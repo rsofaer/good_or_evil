@@ -20,11 +20,7 @@
 
 # Ignore the env file.
 .env
-
-/public/assets
-
 dump.rdb
-<<<<<<< HEAD
 
-=======
->>>>>>> d792d052de904d30ad39c7d22021e40b7f221bc8
+# Ignore the public assets file.
+/public/assets
