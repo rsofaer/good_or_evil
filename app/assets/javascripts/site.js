@@ -8,7 +8,7 @@ window.onload = function () {
 
 // if logic needed here
 
-if ($('#chartContainer_profile').length === 0) {
+if ($('#chartContainer_all_votes_all_posts').length === 0) {
   return;
 }
 
@@ -16,6 +16,7 @@ if ($('#chartContainer_profile').length === 0) {
     {
       animationEnabled: true, // change to false
       title:{
+        fontSize: 20,
         text: "Everyone's votes on everyone's posts"
       },
       backgroundColor: "none",
@@ -38,6 +39,7 @@ if ($('#chartContainer_profile').length === 0) {
     {
       animationEnabled: true, // change to false
       title:{
+        fontSize: 20,
         text: "Your votes on everyone's posts"
       },
       backgroundColor: "none",
@@ -60,6 +62,7 @@ if ($('#chartContainer_profile').length === 0) {
     {
       animationEnabled: true, // change to false
       title:{
+        fontSize: 20,
         text: "Everyone's votes on your posts"
       },
       backgroundColor: "none",
