@@ -1,53 +1,54 @@
 <div class="post_container">
 
-  <div class="row ">
-    <div class="small-8 small-centered medium-4 medium-centered large-4 large-centered columns">
-        <h1>Newsfeed</h1>
-      <div class="item">
+ <%= render 'layouts/header' %>
+
+ <div class="row ">
+  <div class="small-8 small-centered medium-4 medium-centered large-4 large-centered columns">
+    <h1>Newsfeed</h1>
+    <div class="item">
       <%= paginate @posts %>
       <div id="container" class="large-12 columns transitions-enabled large-centered clearfix">
-      <% @posts.each do |post| %>
-      <div class="box col4">
-      <div class="post" data-id="<%=post.id%>">
-        
-          <img src="<%=post.photo_link%><%=post.photo.file.original_filename%>" id="news-feed-image">
-          <br>
-
-          <div id="chartContainer_<%=post.id%>">
+        <% @posts.each do |post| %>
+        <div class="box col4">
+          <div class="post" data-id="<%=post.id%>">
+            <% if post.photo.file.nil? %>
+            <img src="<%=post.photo_link%>" id="news-feed-image">
+            <% else %>
+            <img src="https://s3.amazonaws.com/goodevil/<%=post.photo.file.original_filename%>" id="news-feed-image">
+            <br>
+            <% end %>
+            <div id="chartContainer_<%=post.id%>">
             </div>
-        
-          <div class="good_post"><%= post.likes.where(good: true).count %></div>
-          <div class="evil_post"><%= post.likes.where(good: false).count %></div>
-          <br>
-          <button id="good">good</button>
-          <button id="evil">evil</button>
+
+            <div class="good_post"><%= post.likes.where(good: true).count %></div>
+            <div class="evil_post"><%= post.likes.where(good: false).count %></div>
+            <br>
+            <button id="good">good</button>
+            <button id="evil">evil</button>
           </div>
           <div class="comment_container_<%=post.id%>">
             <form class="addComment" data-id="<%=post.id%>">
-            <input class="new_comment_<%=post.id%>" type="text">
+              <input class="new_comment_<%=post.id%>" type="text">
 
             </form>
             <h4>Comments</h4>
-              
             <% post.comments.each do |comment| %>
-              <div class="comment" data-id="<%=comment.id%>">
-                <div><%= comment.body %></div><br>
-               
-                <div class="good_comment"><%= comment.likes.where(good: true).count %></div>
-                  <button id="good">good</button>
-                
-                <!-- Evil ratings: -->
-                <div class="evil_comment"><%= comment.likes.where(good: false).count %></div>
-                <button id="evil">evil</button>
-                
-              </div>
-            <% end %>
+            <div class="comment" data-id="<%=comment.id%>">
+              <div><%= comment.body %></div><br>
+
+              <div class="good_comment"><%= comment.likes.where(good: true).count %></div>
+              <button id="good">good</button>
+              <div class="evil_comment"><%= comment.likes.where(good: false).count %></div>
+              <button id="evil">evil</button>
             </div>
+
+            <% end %>
+          </div>
+        </div>
         <% end %>
-        
+
       </div>
     </div>
   </div>
-</div>
 </div>
 </div>
