@@ -1,17 +1,10 @@
-/*** These are not needed */
-/*	html {
-		width:100%;
-		height:100%;
-		overflow-y:scroll;
-	}
-*/
 	body {
 		position:relative;
 		width:100%;
 		height:100%;
 		padding:0;
 		margin:0;
-		font-family:"Trebuchet MS","Arial", Helvetica, sans-serif;
+		font-family: "Arial", Helvetica, sans-serif;
 		font-weight:normal;
 		font-style:normal;
 		line-height:1;
@@ -22,40 +15,64 @@
 	}
 
 	div.post_container {
-		margin-top: 0em;
-		margin-left: 10%;
-		background: white;
+		width: 100%;
 	}
+	
+header { 
+	width: 100%;
+	height: 45em;
+	margin-top: 0em;
+	background-size: cover; 
+	color: white;	
+}
+
+#bg {
+ position: fixed; 
+ top: 0; 
+ left: 0;
+ background: cover;
+  }
+.bgwidth { width: 100%; }
+.bgheight { height: 100%; }
+
+.item {
+	width: 100%;
+	position: relative;
+	z-index: 9;
+}
 
 .post_page_link {
-	margin-left: 0;
 	width: 100px;
 	height: 40px;
+	top: 2em;
+	left: 0;
 	padding: 10px 5px 5px 5px;
-/*	margin-right: -10em;*/
 	font-size: 1.25em;
-	background-color: rgba(192, 57, 43, 1);
+	background-color: rgba(192, 57, 43, .8);
 	list-style-type: none;
 	text-align: center;
+	position: fixed;
 }
 
 .post_page_link:hover {
-	background-color: rgba(192, 57, 43, .8);
+	left: .25em;
 }
 
 .profile_post_link {
 	width: 100px;
 	height: 40px;
+	top: 4em;
+	left: 0;
 	padding: 10px 5px 5px 5px;
-/*	margin-right: -10em;*/
 	font-size: 1.25em;
-	background-color: rgba(192, 57, 43, 1);
+	background-color: rgba(192, 57, 43, .8);
 	list-style-type: none;
 	text-align: center;
+	position: fixed;
 }
 
 .profile_post_link:hover {
-	background-color: rgba(192, 57, 43, .8);
+	left: .25em;
 }
 
 	div.profile_container {
@@ -83,7 +100,7 @@
 
 	
 	
-/**** IMPORTANT THESE ARE NEEDED ****/	
+
 	#container {
 		float: none;
 		width: 100%;
@@ -92,15 +109,10 @@
 	  padding: 0;
 	 
 		margin: 0 auto;
-	  /* optional */
+
 	  -webkit-border-radius: 5px;
 	  -moz-border-radius: 5px;
-	  border-radius: 5px;
-	  /* content-box is NEEDED. if border-box is enabled
-	     then it when Masonry calculates the height and width
-		 of the container it counts incorrectly and the result
-		 images running to the edge of the container on the right
-		 and bottom sides. Only apply content-box to the container. */
+	  
 	  -webkit-box-sizing:content-box;
 	  -moz-box-sizing:content-box;
 	  box-sizing:content-box;
@@ -123,41 +135,6 @@
 		margin: 0;
 	}
 	
-	/* unfortunately masonry needs hard pxs for images */
-	.col1 { width: 80px; }
-	.col2 { width: 180px; }
-	.col3 { width: 280px; }
-	.col4 { width: 450px; }
-	.col5 { width: 480px; }
-	.col1 img { max-width: 80px; }
-	.col2 img { max-width: 180px; }
-	.col3 img { max-width: 280px; }
-	.col4 img { max-width: 450px; }
-	.col5 img { max-width: 480px; }
-	
-	/* animations for the transition/reordering */
-	.transitions-enabled.masonry,
-	.transitions-enabled.masonry .masonry-brick {
-	  -webkit-transition-duration: 0.7s;
-	  -moz-transition-duration: 0.7s;
-	  -ms-transition-duration: 0.7s;
-	  -o-transition-duration: 0.7s;
-	  transition-duration: 0.7s;
-	}
-	.transitions-enabled.masonry {
-	  -webkit-transition-property: height, width;
-	  -moz-transition-property: height, width;
-	  -ms-transition-property: height, width;
-	  -o-transition-property: height, width;
-	  transition-property: height, width;
-	}
-	.transitions-enabled.masonry  .masonry-brick {
-	  -webkit-transition-property: left, right, top;
-	  -moz-transition-property: left, right, top;
-	  -ms-transition-property: left, right, top;
-	  -o-transition-property: left, right, top;
-	  transition-property: left, right, top;
-	}
 
 
 
