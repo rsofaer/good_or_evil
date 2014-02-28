@@ -12,7 +12,7 @@ class SiteController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
     @user = current_user
     all_votes_all_posts_total = Like.where(likeable_type: Post).count
     gon.all_votes_all_posts_good = Like.where(likeable_type: Post, good: true).count
