@@ -58,11 +58,19 @@ var makeChart = function(index, value){
 // .each is taking gon.posts and calling makeChart
   if(gon.posts !== undefined){
     $.each(gon.posts, makeChart);
- console.log(gon.posts);
+ // console.log(gon.posts);
 
 }
 
+
+
+
   $('.addComment').on('submit', function(event){
+    
+    if ($('.new_comment_'+this.dataset.id).val() === ""){
+    return;
+    }
+
     event.preventDefault();
     var new_comment = {};
     new_comment.post_id  = this.dataset.id;
@@ -126,7 +134,7 @@ var makeChart = function(index, value){
     }
     like_comment.likeable_type = "Comment";
     like_comment.likeable_id = this.dataset.id;
-    console.log(like_comment);
+    // console.log(like_comment);
   var _this = this;
     //making the ajax call to route specified with the comment id
     $.ajax({
@@ -134,7 +142,7 @@ var makeChart = function(index, value){
       url: '/posts/'+like_comment.likeable_id+'/like.json', 
       data: {like: like_comment}
     }).done(function(data){
-      console.log(data);
+      // console.log(data);
         $(_this).find('.good_comment').text(data.good_count);
         $(_this).find('.evil_comment').text(data.evil_count);
       });
@@ -144,7 +152,6 @@ var makeChart = function(index, value){
 });
 
 //  IMAGE LOAD AND CANVAS DISPLAY // 
-
 
 
 $(function(){
