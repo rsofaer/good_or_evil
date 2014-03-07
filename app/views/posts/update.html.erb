@@ -1,0 +1,10 @@
+<section>
+  <p>
+    <img src="<%=@post.aws_url%>" class="post-image">
+  </p>
+  <div style="position:absolute;left:10px;top:100px;" class="post-text">
+    <%= @post.text_overlay %>
+  </div>
+  <%= link_to 'Edit', edit_post_path(@post) %>
+  <%= link_to 'Back', root_path %>
+</section>

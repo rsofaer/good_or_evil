@@ -1,2 +1,28 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h2>User Profile</h2>
+
+<div><h4><%= @user.email %></h4></div>
+
+<div><h4>User Stats<h4></div>
+
+<div>
+Posts you've made: <%= @user.posts.count %>
+<br>
+
+Good ratings you've made: <%= @user.likes.where(good:true).count %>
+<br>
+
+Evil ratings you've made: <%= @user.likes.where(good:false).count %>
+<br>
+
+Comments you've made: <%= @user.comments.count %>
+<br>
+
+</div><br>
+
+<div><h4>User Settings<h4></div>
+
+Update email address
+<br>
+
+Update password
+<br>

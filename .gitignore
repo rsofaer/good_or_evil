@@ -14,3 +14,13 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore application configuration
+/config/application.yml
+
+# Ignore the env file.
+.env
+dump.rdb
+
+# Ignore the public assets file.
+/public/assets

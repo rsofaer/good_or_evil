@@ -1,3 +1,40 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body,html{
+    height:100%;
+    width:100%;
+    background-color: rgba(236, 240, 241,1.0);
+    // background: url('/assets/13.jpg') center center no-repeat;
+
+}
+
+.title a {
+margin-left: 2em;
+color: #999;
+}
+
+span#good {
+color: white;
+}
+
+span#evil {
+color: black;
+}
+
+
+.container {
+margin-top: 5em;
+width:100%
+}
+
+.canvasjs-chart-canvas {
+z-index: -100;
+
+}
+
+textarea {
+	width: 250px;
+	height: 100px;
+	font-size: 16px;
+}
